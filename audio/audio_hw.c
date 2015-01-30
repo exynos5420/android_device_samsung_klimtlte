@@ -340,6 +340,10 @@ static void select_devices(struct audio_device *adev)
             new_es325_preset =
                 route_configs[input_source_id][output_device_id]->es325_preset[adev->es325_mode];
         }
+         // disable noise suppression when capturing front and back mic for voice recognition
+        if ((adev->input_source == AUDIO_SOURCE_VOICE_RECOGNITION) &&
+                (adev->in_channel_mask == AUDIO_CHANNEL_IN_FRONT_BACK))
+            new_es325_preset = -1;
     } else {
         if (output_device_id != OUT_DEVICE_NONE) {
             output_route =
@@ -1613,9 +1617,10 @@ static int adev_open_input_stream(struct audio_hw_device *dev,
 
     *stream_in = NULL;
 
-    /* Respond with a request for stereo if a different format is given. */
-    if (config->channel_mask != AUDIO_CHANNEL_IN_STEREO) {
-        config->channel_mask = AUDIO_CHANNEL_IN_STEREO;
+   /* Respond with a request for mono if a different format is given. */ 
+   if (config->channel_mask != AUDIO_CHANNEL_IN_MONO &&
+            config->channel_mask != AUDIO_CHANNEL_IN_FRONT_BACK) {
+        config->channel_mask = AUDIO_CHANNEL_IN_MONO;
         return -EINVAL;
     }
 
