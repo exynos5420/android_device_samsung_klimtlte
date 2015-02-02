@@ -29,12 +29,12 @@ import org.cyanogenmod.hardware.util.FileUtils;
 
 public class KeyDisabler {
 
-    private static String CONTROL_PATH = "/sys/class/sec/sec_touchkey/tsp_keys_enabled";
+    private static String CONTROL_PATH = "/sys/devices/virtual/sec/sec_touchkey/touchkey_enabled";
 
     public static boolean isSupported() { return true; }
 
     public static boolean isActive() {
-        return (FileUtils.readOneLine(CONTROL_PATH).equals("0"));
+        return (FileUtils.readOneLine(CONTROL_PATH).equals("1"));
     }
 
     public static boolean setActive(boolean state) {

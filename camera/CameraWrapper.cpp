@@ -54,7 +54,7 @@ camera_module_t HAL_MODULE_INFO_SYM = {
          version_minor: 0,
          id: CAMERA_HARDWARE_MODULE_ID,
          name: "Exynos5420 Camera Wrapper",
-         author: "The CyanogenMod Project",
+         author: "BLCK",
          methods: &camera_module_methods,
          dso: NULL, /* remove compilation warnings */
          reserved: {0}, /* remove compilation warnings */
@@ -169,8 +169,14 @@ static int camera_set_preview_window(struct camera_device *device,
     ALOGV("%s->%08X->%08X", __FUNCTION__, (uintptr_t)device,
             (uintptr_t)(((wrapper_camera_device_t*)device)->vendor));
 
-    if (!device)
+    if (!device) {
+	ALOGE("Camera device null");
         return -EINVAL;
+    }
+    if (!window) {
+	ALOGE("Camera window is null");
+        return -EINVAL;
+    }
 
     return VENDOR_CALL(device, set_preview_window, window);
 }
@@ -233,8 +239,10 @@ static int camera_start_preview(struct camera_device *device)
     ALOGV("%s->%08X->%08X", __FUNCTION__, (uintptr_t)device,
             (uintptr_t)(((wrapper_camera_device_t*)device)->vendor));
 
-    if (!device)
+    if (!device) {
+	ALOGE("Camera device null");
         return -EINVAL;
+    }
 
     return VENDOR_CALL(device, start_preview);
 }
@@ -255,8 +263,10 @@ static int camera_preview_enabled(struct camera_device *device)
     ALOGV("%s->%08X->%08X", __FUNCTION__, (uintptr_t)device,
             (uintptr_t)(((wrapper_camera_device_t*)device)->vendor));
 
-    if (!device)
+    if (!device) {
+	ALOGE("Camera device null");
         return -EINVAL;
+    }
 
     return VENDOR_CALL(device, preview_enabled);
 }

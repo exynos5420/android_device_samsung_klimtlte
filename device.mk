@@ -14,12 +14,12 @@
 # limitations under the License.
 #
 
-LOCAL_PATH := device/samsung/picassowifi
+LOCAL_PATH := device/samsung/klimtwifi
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
 PRODUCT_CHARACTERISTICS := tablet
-DEVICE_PACKAGE_OVERLAYS += device/samsung/picassowifi/overlay
+DEVICE_PACKAGE_OVERLAYS += device/samsung/klimtwifi/overlay
 
 # Device uses high-density artwork where available
 PRODUCT_AAPT_CONFIG := normal xlarge hdpi xhdpi xxhdpi
@@ -186,8 +186,12 @@ PRODUCT_PACKAGES += \
     libnetcmdiface \
     macloader
 
+# CPU producer to CPU consumer not supported
+PRODUCT_PROPERTY_OVERRIDES += \
+ ro.bq.gpu_to_cpu_unsupported=1
+
 # call dalvik heap config
 $(call inherit-product-if-exists, frameworks/native/build/phone-xxhdpi-2048-dalvik-heap.mk)
 
 # call the proprietary setup
-$(call inherit-product-if-exists, vendor/samsung/picassowifi/picassowifi-vendor.mk)
+$(call inherit-product-if-exists, vendor/samsung/klimtwifi/klimtwifi-vendor.mk)

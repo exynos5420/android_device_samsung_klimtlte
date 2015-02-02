@@ -1,1 +1,1 @@
-add_lunch_combo cm_picassowifi-userdebug
+add_lunch_combo cm_klimtwifi-userdebug

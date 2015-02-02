@@ -14,7 +14,7 @@
 # limitations under the License.
 #
 
-LOCAL_PATH := device/samsung/picassowifi
+LOCAL_PATH := device/samsung/klimtwifi
 
 # Platform
 BOARD_VENDOR := samsung
@@ -25,10 +25,10 @@ TARGET_SOC := exynos5420
 # Architecture
 TARGET_ARCH := arm
 TARGET_ARCH_VARIANT := armv7-a-neon
+TARGET_CPU_VARIANT := cortex-a15
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
 TARGET_CPU_SMP := true
-TARGET_CPU_VARIANT := cortex-a15
 
 # Audio
 BOARD_USES_LIBMEDIA_WITH_AUDIOPARAMETER := true
@@ -43,7 +43,7 @@ BOARD_BLUEDROID_VENDOR_CONF := $(LOCAL_PATH)/bluetooth/libbt_vndcfg.txt
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(LOCAL_PATH)/bluetooth
 
 # Bootloader
-TARGET_OTA_ASSERT_DEVICE := picassowifi
+TARGET_OTA_ASSERT_DEVICE := klimtwifi
 
 # Camera
 # COMMON_GLOBAL_CFLAGS += -DUSE_MEMORY_HEAP_ION
@@ -52,11 +52,16 @@ COMMON_GLOBAL_CFLAGS += -DDISABLE_HW_ID_MATCH_CHECK
 COMMON_GLOBAL_CFLAGS += -DSAMSUNG_CAMERA_HARDWARE
 COMMON_GLOBAL_CFLAGS += -DSAMSUNG_DVFS
 
+# Force the screenshot path to CPU consumer
+COMMON_GLOBAL_CFLAGS += -DFORCE_SCREENSHOT_CPU_PATH
+
 # Kernel
 BOARD_KERNEL_BASE := 0x10000000
 BOARD_KERNEL_PAGESIZE := 2048
-TARGET_KERNEL_CONFIG := cyanogenmod_picassowifi_defconfig
-TARGET_KERNEL_SOURCE := kernel/samsung/exynos5420
+TARGET_KERNEL_CONFIG := klimtwifi_01_defconfig
+TARGET_KERNEL_SOURCE := kernel/samsung/klimtwifi
+# TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-eabi-4.6
+# KERNEL_TOOLCHAIN := /home/cmbuild/android/prebuilts/gcc/linux-x86/arm/arm-eabi-4.6/bin
 
 # Battery
 BOARD_BATTERY_DEVICE_NAME := battery
@@ -82,7 +87,7 @@ BOARD_USES_HWC_SERVICES := true
 TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
 
 # Hardware
-BOARD_HARDWARE_CLASS += device/samsung/picassowifi/cmhw
+BOARD_HARDWARE_CLASS += device/samsung/klimtwifi/cmhw
 
 # Init
 TARGET_NR_SVC_SUPP_GIDS := 20
@@ -114,7 +119,7 @@ BOARD_USERDATAIMAGE_PARTITION_SIZE := 12532580352
 BOARD_FLASH_BLOCK_SIZE := 4096
 
 # PowerHAL
-TARGET_POWERHAL_VARIANT := picassowifi
+TARGET_POWERHAL_VARIANT := klimtwifi
 
 # Recovery
 COMMON_GLOBAL_CFLAGS += -DNO_SECURE_DISCARD
@@ -131,7 +136,7 @@ BOARD_USES_SCALER := true
 
 # SELinux
 BOARD_SEPOLICY_DIRS += \
-	device/samsung/picassowifi/sepolicy
+	device/samsung/klimtwifi/sepolicy
 
 BOARD_SEPOLICY_UNION += \
 	file_contexts \
@@ -169,4 +174,4 @@ WIFI_DRIVER_FW_PATH_PARAM        := "/sys/module/dhd/parameters/firmware_path"
 WIFI_DRIVER_FW_PATH_STA          := "/system/etc/wifi/bcmdhd_sta.bin"
 
 # inherit from the proprietary version
--include vendor/samsung/picassowifi/BoardConfigVendor.mk
+-include vendor/samsung/klimtwifi/BoardConfigVendor.mk

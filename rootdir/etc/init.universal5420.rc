@@ -79,6 +79,9 @@ on post-fs-data
     chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/state
     chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/type
 
+# Open permissions for touchkey_enable so KeyDisabler can write to it
+    chown system root /sys/devices/virtual/sec/sec_touchkey/touchkey_enabled
+
 # For kernel lock in BT/WiFi race condtion
     chmod 0600 /dev/btlock
     chown bluetooth bluetooth /dev/btlock
