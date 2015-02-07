@@ -360,7 +360,7 @@ INPUT_CHANNEL_MAP {
   </path>
 
   <path name="media-main-mic">
-    <path name="channel-left" />
+    <path name="channel-right" />
     <path name="back-mic" />
   </path>
 
