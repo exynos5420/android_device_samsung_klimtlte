@@ -381,8 +381,8 @@ INPUT_CHANNEL_MAP {
   </path>
 
   <path name="communication-main-mic">
-    <path name="channel-left" />
-    <path name="builtin-mic" />
+    <path name="channel-right" />
+    <path name="back-mic" />
   </path>
 
   <path name="bt-sco-mic">
