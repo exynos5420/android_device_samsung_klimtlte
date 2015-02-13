@@ -237,56 +237,73 @@ static int get_output_device_id(audio_devices_t device)
         return OUT_DEVICE_NONE;
 
     if (popcount(device) == 2) {
-        if ((device == (AUDIO_DEVICE_OUT_SPEAKER |
-                        AUDIO_DEVICE_OUT_WIRED_HEADSET)) ||
-                (device == (AUDIO_DEVICE_OUT_SPEAKER |
-                        AUDIO_DEVICE_OUT_WIRED_HEADPHONE)))
-            return OUT_DEVICE_SPEAKER_AND_HEADSET;
-        else if (device == (AUDIO_DEVICE_OUT_SPEAKER |
-                        AUDIO_DEVICE_OUT_EARPIECE))
-            return OUT_DEVICE_SPEAKER_AND_EARPIECE;
-        else
-            return OUT_DEVICE_NONE;
+
+        switch (device) {
+
+            case (AUDIO_DEVICE_OUT_SPEAKER | AUDIO_DEVICE_OUT_WIRED_HEADSET):
+            case (AUDIO_DEVICE_OUT_SPEAKER | AUDIO_DEVICE_OUT_WIRED_HEADPHONE):
+                return OUT_DEVICE_SPEAKER_AND_HEADSET;
+
+            case (AUDIO_DEVICE_OUT_SPEAKER | AUDIO_DEVICE_OUT_EARPIECE):
+                return OUT_DEVICE_SPEAKER_AND_EARPIECE;
+
+            default:
+                return OUT_DEVICE_NONE;
+        }
+
     }
 
     if (popcount(device) != 1)
         return OUT_DEVICE_NONE;
 
     switch (device) {
-    case AUDIO_DEVICE_OUT_SPEAKER:
-        return OUT_DEVICE_SPEAKER;
-    case AUDIO_DEVICE_OUT_EARPIECE:
-        return OUT_DEVICE_EARPIECE;
-    case AUDIO_DEVICE_OUT_WIRED_HEADSET:
-        return OUT_DEVICE_HEADSET;
-    case AUDIO_DEVICE_OUT_WIRED_HEADPHONE:
-        return OUT_DEVICE_HEADPHONES;
-    case AUDIO_DEVICE_OUT_BLUETOOTH_SCO:
-    case AUDIO_DEVICE_OUT_BLUETOOTH_SCO_HEADSET:
-    case AUDIO_DEVICE_OUT_BLUETOOTH_SCO_CARKIT:
-        return OUT_DEVICE_BT_SCO;
-    default:
-        return OUT_DEVICE_NONE;
+        case AUDIO_DEVICE_OUT_SPEAKER:
+            return OUT_DEVICE_SPEAKER;
+
+        case AUDIO_DEVICE_OUT_EARPIECE:
+            return OUT_DEVICE_EARPIECE;
+
+        case AUDIO_DEVICE_OUT_WIRED_HEADSET:
+            return OUT_DEVICE_HEADSET;
+
+        case AUDIO_DEVICE_OUT_WIRED_HEADPHONE:
+            return OUT_DEVICE_HEADPHONES;
+
+        case AUDIO_DEVICE_OUT_BLUETOOTH_SCO:
+        case AUDIO_DEVICE_OUT_BLUETOOTH_SCO_HEADSET:
+        case AUDIO_DEVICE_OUT_BLUETOOTH_SCO_CARKIT:
+            return OUT_DEVICE_BT_SCO;
+
+        default:
+            return OUT_DEVICE_NONE;
     }
+
 }
 
 static int get_input_source_id(audio_source_t source)
 {
     switch (source) {
-    case AUDIO_SOURCE_DEFAULT:
-        return IN_SOURCE_NONE;
-    case AUDIO_SOURCE_MIC:
-        return IN_SOURCE_MIC;
-    case AUDIO_SOURCE_CAMCORDER:
-        return IN_SOURCE_CAMCORDER;
-    case AUDIO_SOURCE_VOICE_RECOGNITION:
-        return IN_SOURCE_VOICE_RECOGNITION;
-    case AUDIO_SOURCE_VOICE_COMMUNICATION:
-        return IN_SOURCE_VOICE_COMMUNICATION;
-    case AUDIO_SOURCE_VOICE_CALL:
-        return IN_SOURCE_VOICE_CALL;
-    default:
-        return IN_SOURCE_NONE;
+
+        case AUDIO_SOURCE_DEFAULT:
+            return IN_SOURCE_NONE;
+
+        case AUDIO_SOURCE_MIC:
+            return IN_SOURCE_MIC;
+
+        case AUDIO_SOURCE_CAMCORDER:
+            return IN_SOURCE_CAMCORDER;
+
+        case AUDIO_SOURCE_VOICE_RECOGNITION:
+            return IN_SOURCE_VOICE_RECOGNITION;
+
+        case AUDIO_SOURCE_VOICE_COMMUNICATION:
+            return IN_SOURCE_VOICE_COMMUNICATION;
+
+        case AUDIO_SOURCE_VOICE_CALL:
+            return IN_SOURCE_VOICE_CALL;
+
+        default:
+            return IN_SOURCE_NONE;
     }
 }
 
@@ -325,15 +342,15 @@ static void select_devices(struct audio_device *adev)
                 route_configs[input_source_id][output_device_id]->es325_preset[adev->es325_mode];
         } else {
             switch(adev->in_device) {
-            case AUDIO_DEVICE_IN_WIRED_HEADSET & ~AUDIO_DEVICE_BIT_IN:
-                output_device_id = OUT_DEVICE_HEADSET;
-                break;
-            case AUDIO_DEVICE_IN_BLUETOOTH_SCO_HEADSET & ~AUDIO_DEVICE_BIT_IN:
-                output_device_id = OUT_DEVICE_BT_SCO;
-                break;
-            default:
-                output_device_id = OUT_DEVICE_SPEAKER;
-                break;
+                case AUDIO_DEVICE_IN_WIRED_HEADSET & ~AUDIO_DEVICE_BIT_IN:
+                    output_device_id = OUT_DEVICE_HEADSET;
+                    break;
+                case AUDIO_DEVICE_IN_BLUETOOTH_SCO_HEADSET & ~AUDIO_DEVICE_BIT_IN:
+                    output_device_id = OUT_DEVICE_BT_SCO;
+                    break;
+                default:
+                    output_device_id = OUT_DEVICE_SPEAKER;
+                    break;
             }
             input_route =
                 route_configs[input_source_id][output_device_id]->input_route;
@@ -543,18 +560,23 @@ static void adev_set_call_audio_path(struct audio_device *adev)
     enum ril_audio_path device_type;
 
     switch(adev->out_device) {
+
         case AUDIO_DEVICE_OUT_SPEAKER:
             device_type = SOUND_AUDIO_PATH_SPEAKER;
             break;
+
         case AUDIO_DEVICE_OUT_EARPIECE:
             device_type = SOUND_AUDIO_PATH_EARPIECE;
             break;
+
         case AUDIO_DEVICE_OUT_WIRED_HEADSET:
             device_type = SOUND_AUDIO_PATH_HEADSET;
             break;
+
         case AUDIO_DEVICE_OUT_WIRED_HEADPHONE:
             device_type = SOUND_AUDIO_PATH_HEADPHONE;
             break;
+
         case AUDIO_DEVICE_OUT_BLUETOOTH_SCO:
         case AUDIO_DEVICE_OUT_BLUETOOTH_SCO_HEADSET:
         case AUDIO_DEVICE_OUT_BLUETOOTH_SCO_CARKIT:
@@ -564,6 +586,7 @@ static void adev_set_call_audio_path(struct audio_device *adev)
                 device_type = SOUND_AUDIO_PATH_BLUETOOTH_NO_NR;
             }
             break;
+
         default:
             /* if output device isn't supported, use handset by default */
             device_type = SOUND_AUDIO_PATH_EARPIECE;
@@ -1504,17 +1527,21 @@ static int adev_set_voice_volume(struct audio_hw_device *dev, float volume)
         enum ril_sound_type sound_type;
 
         switch (adev->out_device) {
+
             case AUDIO_DEVICE_OUT_SPEAKER:
                 sound_type = SOUND_TYPE_SPEAKER;
                 break;
+
             case AUDIO_DEVICE_OUT_WIRED_HEADSET:
             case AUDIO_DEVICE_OUT_WIRED_HEADPHONE:
                 sound_type = SOUND_TYPE_HEADSET;
                 break;
+
             case AUDIO_DEVICE_OUT_BLUETOOTH_SCO:
             case AUDIO_DEVICE_OUT_ALL_SCO:
                 sound_type = SOUND_TYPE_BTVOICE;
                 break;
+
             default:
                 sound_type = SOUND_TYPE_VOICE;
         }
