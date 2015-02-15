@@ -285,7 +285,7 @@ static int get_input_source_id(audio_source_t source)
     switch (source) {
 
         case AUDIO_SOURCE_DEFAULT:
-            return IN_SOURCE_NONE;
+            return IN_SOURCE_VOICE_CALL;
 
         case AUDIO_SOURCE_MIC:
             return IN_SOURCE_MIC;

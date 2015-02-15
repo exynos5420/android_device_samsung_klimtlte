@@ -299,11 +299,20 @@ INPUT_CHANNEL_MAP {
   </path>
 
   <path name="media-speaker">
-      <path name="speaker" />
+     <path name="speaker" />
+     <ctl name="AIF2 Mode" value="Slave" />
+     <ctl name="SPKOUTL Input 3" value="ASRC2L" />
+     <ctl name="Speaker Digital Volume" value="144" />
+     <ctl name="SPKOUTL Input 1 Volume" value="10" />
+     <ctl name="SPKOUTL Input 2 Volume" value="10" />
+     <ctl name="SPKOUTL Input 3 Volume" value="32" />
+     <ctl name="SPKOUTL Input 4 Volume" value="32" />
   </path>
 
   <path name="media-earpiece">
-      <path name="earpiece" />
+     <path name="earpiece" />
+     <ctl name="AIF2 Mode" value="Slave" />
+     <ctl name="EPOUT Input 3" value="ASRC2L" />
   </path>
 
   <path name="media-headphones">
