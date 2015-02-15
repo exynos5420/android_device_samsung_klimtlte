@@ -280,12 +280,16 @@ static int get_output_device_id(audio_devices_t device)
 
 }
 
-static int get_input_source_id(audio_source_t source)
+static int get_input_source_id(audio_source_t source, bool wb_amr)
 {
+
+ALOGV("BP1: source: %d , wb_amr: %d",
+              source, wb_amr);
+
     switch (source) {
 
         case AUDIO_SOURCE_DEFAULT:
-            return IN_SOURCE_VOICE_CALL;
+            return IN_SOURCE_NONE;
 
         case AUDIO_SOURCE_MIC:
             return IN_SOURCE_MIC;
@@ -300,6 +304,9 @@ static int get_input_source_id(audio_source_t source)
             return IN_SOURCE_VOICE_COMMUNICATION;
 
         case AUDIO_SOURCE_VOICE_CALL:
+            if (wb_amr) {
+                return IN_SOURCE_VOICE_CALL_WB;
+            }
             return IN_SOURCE_VOICE_CALL;
 
         default:
@@ -318,7 +325,7 @@ static void adev_set_call_audio_path(struct audio_device *adev);
 static void select_devices(struct audio_device *adev)
 {
     int output_device_id = get_output_device_id(adev->out_device);
-    int input_source_id = get_input_source_id(adev->input_source);
+    int input_source_id = get_input_source_id(adev->input_source, adev->wb_amr);
     const char *output_route = NULL;
     const char *input_route = NULL;
     int new_route_id;
@@ -332,7 +339,7 @@ static void select_devices(struct audio_device *adev)
     adev->cur_route_id = new_route_id;
     adev->es325_mode = adev->es325_new_mode;
 
-    if (input_source_id != IN_SOURCE_NONE) {
+    if (input_source_id != IN_SOURCE_NONE || adev->in_call) {
         if (output_device_id != OUT_DEVICE_NONE) {
             input_route =
                 route_configs[input_source_id][output_device_id]->input_route;
@@ -558,23 +565,28 @@ static void adev_set_wb_amr_callback(void *data, int enable)
 static void adev_set_call_audio_path(struct audio_device *adev)
 {
     enum ril_audio_path device_type;
+    enum ril_extra_volume extra_volume;
 
     switch(adev->out_device) {
 
         case AUDIO_DEVICE_OUT_SPEAKER:
             device_type = SOUND_AUDIO_PATH_SPEAKER;
+            extra_volume = ORIGINAL_PATH;
             break;
 
         case AUDIO_DEVICE_OUT_EARPIECE:
             device_type = SOUND_AUDIO_PATH_EARPIECE;
+            extra_volume = ORIGINAL_PATH;
             break;
 
         case AUDIO_DEVICE_OUT_WIRED_HEADSET:
             device_type = SOUND_AUDIO_PATH_HEADSET;
+            extra_volume = ORIGINAL_PATH;
             break;
 
         case AUDIO_DEVICE_OUT_WIRED_HEADPHONE:
             device_type = SOUND_AUDIO_PATH_HEADPHONE;
+            extra_volume = ORIGINAL_PATH;
             break;
 
         case AUDIO_DEVICE_OUT_BLUETOOTH_SCO:
@@ -582,21 +594,24 @@ static void adev_set_call_audio_path(struct audio_device *adev)
         case AUDIO_DEVICE_OUT_BLUETOOTH_SCO_CARKIT:
             if (adev->bluetooth_nrec) {
                 device_type = SOUND_AUDIO_PATH_BLUETOOTH;
+                extra_volume = ORIGINAL_PATH;
             } else {
                 device_type = SOUND_AUDIO_PATH_BLUETOOTH_NO_NR;
+                extra_volume = ORIGINAL_PATH;
             }
             break;
 
         default:
             /* if output device isn't supported, use handset by default */
             device_type = SOUND_AUDIO_PATH_EARPIECE;
+            extra_volume = ORIGINAL_PATH;
             break;
     }
 
     ALOGV("%s: ril_set_call_audio_path(%d)", __func__, device_type);
 
     /* TODO: Figure out which devices need EXTRA_VOLUME_PATH set */
-    ril_set_call_audio_path(&adev->ril, device_type, ORIGINAL_PATH);
+    ril_set_call_audio_path(&adev->ril, device_type, extra_volume);
 }
 
 /* Helper functions */
@@ -1644,10 +1659,9 @@ static int adev_open_input_stream(struct audio_hw_device *dev,
 
     *stream_in = NULL;
 
-   /* Respond with a request for mono if a different format is given. */ 
-   if (config->channel_mask != AUDIO_CHANNEL_IN_MONO &&
-            config->channel_mask != AUDIO_CHANNEL_IN_FRONT_BACK) {
-        config->channel_mask = AUDIO_CHANNEL_IN_MONO;
+   /* Respond with a request for stereo if a different format is given. */
+   if (config->channel_mask != AUDIO_CHANNEL_IN_STEREO) {
+        config->channel_mask = AUDIO_CHANNEL_IN_STEREO;
         return -EINVAL;
     }
 
