@@ -60,14 +60,14 @@ struct route_config {
 /* TODO: Figure out whether voice routes need to set ES325 presets */
 const struct route_config voice_speaker = {
     "voice-speaker",
-    "voice-main-mic",
+    "voice-speaker-main-mic",
     { ES325_PRESET_OFF,
       ES325_PRESET_OFF }
 };
 
 const struct route_config voice_speaker_wb = {
     "voice-speaker-wb",
-    "voice-main-mic-wb",
+    "voice-speaker-main-mic",
     { ES325_PRESET_OFF,
       ES325_PRESET_OFF }
 };

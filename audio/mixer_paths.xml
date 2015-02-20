@@ -247,8 +247,7 @@ INPUT_CHANNEL_MAP {
     <ctl name="Main Mic Switch" value="1" />
     <ctl name="LHPF1 Input 1" value="IN1L" />
     <ctl name="IN1L Volume" value="18" />
-    <ctl name="AIF2TX1 Input 1" value="ASRC1L" />
-    <ctl name="AIF2TX2 Input 1" value="ASRC1R" />
+    <ctl name="LHPF1 Input 1 Volume" value="32" />
     <ctl name="IN1L Digital Volume" value="128" />
   </path>
 
@@ -256,8 +255,7 @@ INPUT_CHANNEL_MAP {
     <ctl name="Sub Mic Switch" value="1" />
     <ctl name="LHPF2 Input 1" value="IN2L" />
     <ctl name="IN2L Volume" value="17" />
-    <ctl name="AIF2TX1 Input 1" value="ASRC1L" />
-    <ctl name="AIF2TX2 Input 1" value="ASRC1R" />
+    <ctl name="LHPF2 Input 1 Volume" value="32" />
     <ctl name="IN2L Digital Volume" value="128" />
   </path>
 
@@ -265,8 +263,7 @@ INPUT_CHANNEL_MAP {
     <ctl name="3rd Mic Switch" value="1" />
     <ctl name="LHPF1 Input 1" value="IN2R" />
     <ctl name="IN2R Volume" value="20" />
-    <ctl name="AIF2TX1 Input 1" value="ASRC1L" />
-    <ctl name="AIF2TX2 Input 1" value="ASRC1R" />
+    <ctl name="LHPF1 Input 1 Volume" value="32" />
     <ctl name="IN2R Digital Volume" value="128" />
   </path>
 
@@ -405,11 +402,30 @@ INPUT_CHANNEL_MAP {
   <!-- Capture paths -->
 
   <path name="voice-main-mic">
+      <path name="channel-stereo" />
+      <path name="aif2-stereo-mic" />
       <path name="builtin-mic" />
+      <path name="back-mic" />
+      <ctl name="IN2L Volume" value="25" />
+      <ctl name="IN2R Volume" value="23" />
   </path>
 
   <path name="voice-main-mic-wb">
+      <path name="channel-stereo" />
+      <path name="aif2-stereo-mic" />
       <path name="builtin-mic" />
+      <path name="back-mic" />
+      <ctl name="IN2L Volume" value="25" />
+      <ctl name="IN2R Volume" value="23" />
+  </path>
+
+  <path name="voice-speaker-main-mic">
+      <path name="channel-stereo" />
+      <path name="aif2-stereo-mic" />
+      <path name="back-mic" />
+      <path name="third-mic" />
+      <ctl name="IN2L Volume" value="23" />
+      <ctl name="IN2R Volume" value="23" />
   </path>
 
   <path name="voice-headset-mic">
