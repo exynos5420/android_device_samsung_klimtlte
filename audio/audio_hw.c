@@ -366,7 +366,8 @@ static void select_devices(struct audio_device *adev)
         }
          // disable noise suppression when capturing front and back mic for voice recognition
         if ((adev->input_source == AUDIO_SOURCE_VOICE_RECOGNITION) &&
-                (adev->in_channel_mask == AUDIO_CHANNEL_IN_FRONT_BACK))
+                (adev->in_channel_mask == AUDIO_CHANNEL_IN_FRONT_BACK) &&
+                !adev->in_call)
             new_es325_preset = -1;
     } else {
         if (output_device_id != OUT_DEVICE_NONE) {
