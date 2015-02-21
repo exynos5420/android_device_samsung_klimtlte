@@ -208,7 +208,7 @@ INPUT_CHANNEL_MAP {
   <!-- Volume -->
 
   <path name="speaker-volume">
-    <ctl name="Speaker Digital Volume" value="108" />
+    <ctl name="Speaker Digital Volume" value="128" />
   </path>
 
   <!-- Paths that roughly correspond to devices -->
