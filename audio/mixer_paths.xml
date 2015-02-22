@@ -406,8 +406,8 @@ INPUT_CHANNEL_MAP {
       <path name="aif2-stereo-mic" />
       <path name="builtin-mic" />
       <path name="back-mic" />
+      <ctl name="IN1L Volume" value="25" />
       <ctl name="IN2L Volume" value="25" />
-      <ctl name="IN2R Volume" value="23" />
   </path>
 
   <path name="voice-main-mic-wb">
@@ -415,8 +415,8 @@ INPUT_CHANNEL_MAP {
       <path name="aif2-stereo-mic" />
       <path name="builtin-mic" />
       <path name="back-mic" />
+      <ctl name="IN1L Volume" value="25" />
       <ctl name="IN2L Volume" value="25" />
-      <ctl name="IN2R Volume" value="23" />
   </path>
 
   <path name="voice-speaker-main-mic">
