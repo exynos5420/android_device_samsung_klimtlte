@@ -4,15 +4,15 @@ vendor/firmware/srp_data.bin
 vendor/firmware/srp_vliw.bin
 
 # Bluetooth
-vendor/firmware/bcm4335.hcd
-vendor/firmware/bcm4335_A0.hcd
-vendor/firmware/bcm4335_murata.hcd
-vendor/firmware/bcm4335_semco.hcd
-vendor/firmware/BT_FW_VER_BCM4339_003.001.009.0031.0136_ORC_N1-3G.hcd
+vendor/firmware/bcm4350.hcd
+vendor/firmware/bcm4350_A0.hcd
+vendor/firmware/bcm4350_murata.hcd
+vendor/firmware/bcm4350_semco.hcd
+vendor/firmware/BT_FW_VER_BCM4354_003.001.012.0197.0319_Klint_3G_WIFI_ORC.hcd
 
 # Camera
 lib/hw/camera.vendor.universal5420.so
-lib/libak8963c.so
+lib/libak09911c.so
 lib/libarcsoft_flawlessface.so
 lib/libarcsoft_nighthawk.so
 lib/libarcsoft_night_shot.so
@@ -85,10 +85,10 @@ media/battery_error.qmg
 media/chargingwarning.qmg
 
 # Media
-vendor/firmware/fimc_is_fw2_IMX134.bin
+vendor/firmware/fimc_is_fw2_IMX134_EEPROM.bin
 vendor/firmware/mfc_fw.bin
-vendor/firmware/setfile_6b2.bin
-vendor/firmware/setfile_imx134.bin
+vendor/firmware/setfile_6b2_eeprom.bin
+vendor/firmware/setfile_imx134_eeprom.bin
 
 # Mobicore
 app/FFFFFFFF000000000000000000000001.drbin
@@ -117,8 +117,8 @@ bin/scranton_RD
 lib/hw/sensors.universal5420.so
 
 # Widevine
-# vendor/lib/libwvm.so
-# vendor/lib/libWVStreamControlAPI_L1.so
+vendor/lib/libwvm.so
+vendor/lib/libWVStreamControlAPI_L1.so
 
 # Wifi
 etc/wifi/bcmdhd_apsta.bin
