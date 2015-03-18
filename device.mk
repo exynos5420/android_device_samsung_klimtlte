@@ -61,7 +61,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libion \
     hwcomposer.exynos5 \
-    gralloc.exynos5
+    gralloc.exynos5 \
+    memtrack.exynos5
 
 # IR
 PRODUCT_PACKAGES += \
