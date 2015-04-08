@@ -26,8 +26,13 @@
 #include <hardware/power.h>
 
 #define TSP_POWER "/sys/class/input/input1/enabled"
-#define TOUCHKEY_POWER "/sys/class/input/input10/enabled"
-#define GPIO_KEYS_POWER "/sys/class/input/input9/enabled"
+#define TOUCHKEY_POWER "/sys/class/input/input8/enabled"
+#define INPUT_POWER7 "/sys/class/input/input7/enabled"
+#define INPUT_POWER6 "/sys/class/input/input6/enabled"
+#define INPUT_POWER5 "/sys/class/input/input5/enabled"
+#define INPUT_POWER4 "/sys/class/input/input4/enabled"
+#define INPUT_POWER3 "/sys/class/input/input3/enabled"
+#define INPUT_POWER2 "/sys/class/input/input2/enabled"
 
 static void sysfs_write(char *path, char *s) {
     char buf[80];
@@ -58,7 +63,12 @@ static void power_set_interactive(struct power_module *module, int on)
     ALOGD("%s: %s input devices", __func__, on ? "enabling" : "disabling");
     sysfs_write(TSP_POWER, on ? "1" : "0");
     sysfs_write(TOUCHKEY_POWER, on ? "1" : "0");
-    sysfs_write(GPIO_KEYS_POWER, on ? "1" : "0");
+    sysfs_write(INPUT_POWER2, on ? "1" : "0");
+    sysfs_write(INPUT_POWER3, on ? "1" : "0");
+    sysfs_write(INPUT_POWER4, on ? "1" : "0");
+    sysfs_write(INPUT_POWER5, on ? "1" : "0");
+    sysfs_write(INPUT_POWER6, on ? "1" : "0");
+    sysfs_write(INPUT_POWER7, on ? "1" : "0");
 }
 
 static void power_hint(struct power_module *module, power_hint_t hint,
