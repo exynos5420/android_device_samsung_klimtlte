@@ -20,4 +20,5 @@ PRODUCT_PROPERTY_OVERRIDES += \
     keyguard.no_require_sim=true \
     rild.libpath=/system/lib/libsec-ril.so \
     rild.libargs=-d /dev/ttyS0 \
-    ro.telephony.default_network=9
+    ro.telephony.default_network=9 \
+    ro.telephony.mms_data_profile=5
