@@ -365,9 +365,9 @@ INPUT_CHANNEL_MAP {
     <path name="voice-earpiece-mic-wb">
         <path name="back-mic"/>
         <path name="channel-right"/>
-        <ctl name="IN1L Volume" value="30"/>
-        <ctl name="IN1R Volume" value="30"/>
-        <ctl name="IN2L Volume" value="15"/>
+        <ctl name="IN1L Volume" value="80"/>
+        <ctl name="IN1R Volume" value="80"/>
+        <ctl name="IN2L Volume" value="40"/>
         <ctl name="LHPF1 Input 1" value="IN1L"/>
     </path>
     
