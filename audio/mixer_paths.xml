@@ -242,12 +242,12 @@ INPUT_CHANNEL_MAP {
         <ctl name="EPOUT Input 2 Volume" value="28"/>
         <ctl name="EPOUT Input 3 Volume" value="30"/>
         <ctl name="EPOUT Input 4 Volume" value="30"/>
-        <ctl name="SPKOUTL Input 1 Volume" value="31"/>
-        <ctl name="SPKOUTR Input 1 Volume" value="31"/>
-        <ctl name="SPKOUTL Input 3 Volume" value="30"/>
+        <ctl name="SPKOUTL Input 1 Volume" value="36"/>
+        <ctl name="SPKOUTR Input 1 Volume" value="36"/>
+        <ctl name="SPKOUTL Input 3 Volume" value="36"/>
         <ctl name="HPOUT1 Digital Volume" value="115"/>
         <ctl name="EPOUT Digital Volume" value="122"/>
-        <ctl name="Speaker Digital Volume" value="121"/>
+        <ctl name="Speaker Digital Volume" value="131"/>
         <ctl name="EPOUT DRE Switch" value="1"/>
     </path>
     
