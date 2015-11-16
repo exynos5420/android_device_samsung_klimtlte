@@ -573,8 +573,9 @@ on property:persist.sys.storage_preload=1
 on property:persist.sys.storage_preload=0
     start umount_service
 
-service swapon /sbin/sswap -s
+service sswap /sbin/sswap -s
     class core
     user root
     group root
     oneshot
+    seclabel u:r:sswap:s0
