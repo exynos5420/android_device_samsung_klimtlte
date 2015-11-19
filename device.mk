@@ -181,6 +181,9 @@ PRODUCT_PACKAGES += \
     libwpa_client \
     wpa_supplicant
 
+# IO Scheduler
+PRODUCT_PROPERTY_OVERRIDES += \
+    sys.io.scheduler=bfq
 
 PRODUCT_PACKAGES += \
     libnetcmdiface \
