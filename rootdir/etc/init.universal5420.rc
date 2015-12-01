@@ -514,16 +514,27 @@ service gpsd /system/bin/gpsd -c /system/etc/gps.xml
 service mobicore /system/bin/mcDriverDaemon -r /system/app/FFFFFFFF000000000000000000000001.drbin -r /system/app/mcRegistry/ffffffffd0000000000000000000000a.tlbin
     class core
     user system
-    group system    
+    group system
 
 # LPM
 on charger
-    mount ext4 /dev/block/mmcblk0p18 /system wait ro
-    class_start sec-charger
 
-service sec-playlpm /system/bin/lpm
-    class sec-charger
+    # EHCI runtime enable for LPA
+        write /sys/devices/platform/s5p-ehci/power/control auto
+
+        mkdir /data/log 0777
+        chmod 0666 /dev/log/radio
+        chmod 0666 /dev/log/main
+        chmod 0666 /dev/log/event
+
+        ifup lo
+        hostname localhost
+        domainname localdomain
+
+service charger /sbin/healthd -c
+    class charger
     critical
+    seclabel u:r:healthd:s0
 
 # service for TZPR provisioning version check app
 service scranton_RD /system/bin/scranton_RD

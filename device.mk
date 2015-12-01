@@ -149,8 +149,12 @@ PRODUCT_PACKAGES += \
     init.universal5420.rc \
     init.universal5420.usb.rc \
     init.universal5420.wifi.rc \
-    lpm.rc \
     ueventd.universal5420.rc
+
+# Charger
+PRODUCT_PACKAGES += \
+    charger_res_images
+
 
 # Radio (needed for audio controls even on wifi-only)
 PRODUCT_PACKAGES += \
