@@ -10,4 +10,4 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     PRODUCT_MODEL=SM-T700 \
     PRODUCT_NAME=klimtwifi \
     PRODUCT_DEVICE=klimtwifi \
-    TARGET_DEVICE=klimtwifi \
+    TARGET_DEVICE=klimtwifi
