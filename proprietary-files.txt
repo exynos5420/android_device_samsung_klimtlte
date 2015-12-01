@@ -93,6 +93,9 @@ lib/hw/sensors.universal5420.so
 vendor/lib/libwvm.so
 vendor/lib/libWVStreamControlAPI_L1.so
 
+# Samsung SSWAP
+root/sbin/sswap
+
 # Wifi
 etc/wifi/bcmdhd_apsta.bin
 etc/wifi/bcmdhd_mfg.bin
