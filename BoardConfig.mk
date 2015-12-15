@@ -36,6 +36,13 @@ BOARD_USES_LIBMEDIA_WITH_AUDIOPARAMETER := true
 # Bionic
 TARGET_USE_QCOM_BIONIC_OPTIMIZATION := true
 
+# RIL
+BOARD_PROVIDES_LIBRIL := true
+# hardware/samsung/ril
+BOARD_MODEM_TYPE := xmm7260
+# RIL.java overwrite
+BOARD_RIL_CLASS := ../../../$(LOCAL_PATH)/ril
+
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
@@ -161,6 +168,7 @@ BOARD_SEPOLICY_UNION += \
 	system_server.te \
 	sswap.te \
 	vold.te \
+	rild.te \
 	wpa.te
 
 # SurfaceFlinger

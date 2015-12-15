@@ -74,6 +74,10 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/sec_touchscreen.kl:system/usr/keylayout/sec_touchscreen.kl \
     $(LOCAL_PATH)/configs/sec_touchkey.kl:system/usr/keylayout/sec_touchkey.kl
 
+PRODUCT_PROPERTY_OVERRIDES := \
+    keyguard.no_require_sim=true \
+    ro.com.android.dataroaming=true
+
 # Keystore
 PRODUCT_PACKAGES += \
     keystore.exynos5
@@ -137,7 +141,9 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
     frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml \
     frameworks/native/data/etc/android.hardware.bluetooth.xml:system/etc/permissions/android.hardware.bluetooth.xml \
-    frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml
+    frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
+    frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
+    frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml
 
 # Power
 PRODUCT_PACKAGES += \
@@ -149,6 +155,7 @@ PRODUCT_PACKAGES += \
     init.universal5420.rc \
     init.universal5420.usb.rc \
     init.universal5420.wifi.rc \
+    init.baseband.rc \
     ueventd.universal5420.rc
 
 # Charger
@@ -159,7 +166,10 @@ PRODUCT_PACKAGES += \
 # Radio (needed for audio controls even on wifi-only)
 PRODUCT_PACKAGES += \
     libsecril-client \
-    libsecril-client-sap
+    libsecril-client-sap \
+    libril \
+    librilutils \
+    rild 
 
 # Recovery
 PRODUCT_PACKAGES += \
@@ -197,6 +207,9 @@ PRODUCT_PACKAGES += \
 # CPU producer to CPU consumer not supported
 PRODUCT_PROPERTY_OVERRIDES += \
  ro.bq.gpu_to_cpu_unsupported=1
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.carrier=unknown 
 
 # call dalvik heap config
 $(call inherit-product-if-exists, frameworks/native/build/phone-xxhdpi-2048-dalvik-heap.mk)
