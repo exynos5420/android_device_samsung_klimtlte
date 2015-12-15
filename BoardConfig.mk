@@ -34,6 +34,13 @@ TARGET_CPU_VARIANT := cortex-a15
 # Vold
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/class/android_usb/android0/f_mass_storage/lun%d/file
 
+# RIL
+BOARD_PROVIDES_LIBRIL := true
+# hardware/samsung/ril
+BOARD_MODEM_TYPE := xmm7260
+# RIL.java overwrite
+BOARD_RIL_CLASS := ../../../$(LOCAL_PATH)/ril
+
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true

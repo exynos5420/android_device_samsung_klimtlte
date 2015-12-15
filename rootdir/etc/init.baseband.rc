@@ -1,0 +1,38 @@
+on init
+    mkdir /efs 0771 radio system
+    symlink /dev/block/mmcblk0p13 /dev/mbin0
+    restorecon /dev/mbin0
+    symlink  /sys/devices/platform/s5p-ehci/ehci_power /dev/ehci_power
+
+    write /sys/module/modem_link_pm_xmm626x/parameters/l2_delay 500
+    write /sys/module/modem_link_pm_xmm626x/parameters/hub_delay 500
+    write /sys/module/modem_link_device_hsic_4ncm/parameters/tx_qlen 50
+
+on fs
+    chown radio system /efs
+    chmod 0771 /efs
+
+    chown radio radio /sys/devices/virtual/misc/multipdp/waketime
+    chmod 0660 /sys/devices/virtual/misc/umts_dm0/dm_state
+    chown radio system /sys/devices/virtual/misc/umts_dm0/dm_state
+    chown radio radio /sys/devices/platform/s5p-ehci/ehci_cpu_core
+
+service cpboot-daemon /sbin/cbd -d -txmm7160 -bh -mh -p 13
+    class main
+    user root
+    group radio cache inet misc audio sdcard_rw log sdcard_r shell
+#    seclabel u:r:cbd:s0
+
+service_redefine ril-daemon /system/bin/rild
+    class main
+    socket rild stream 660 root radio
+    socket rild-debug stream 660 radio system
+    user root
+    group radio cache inet misc audio sdcard_r sdcard_rw diag log
+    onrestart restart cpboot-daemon
+
+# Modem Logging daemon
+#service ML-daemon /system/bin/mlexe
+    #class main
+    #user root
+    #group system radio inet net_raw

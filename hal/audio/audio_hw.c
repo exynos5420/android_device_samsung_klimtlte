@@ -134,6 +134,7 @@ struct audio_device {
     audio_devices_t out_device;
     audio_devices_t in_device;
     bool mic_mute;
+    bool noise_suppression;
     struct audio_route *ar;
     audio_source_t input_source;
     int cur_route_id;     /* current route ID: combination of input source
@@ -561,7 +562,9 @@ static void adev_set_call_audio_path(struct audio_device *adev)
     }
 
     ALOGV("%s: ril_set_call_audio_path(%d)", __func__, device_type);
-    ril_set_call_audio_path(&adev->ril, device_type);
+
+    /* TODO: Figure out which devices need EXTRA_VOLUME_PATH set */
+    ril_set_call_audio_path(&adev->ril, device_type, ORIGINAL_PATH);
 }
 
 /* Helper functions */
@@ -1444,8 +1447,10 @@ static int adev_set_parameters(struct audio_hw_device *dev, const char *kvpairs)
     if (ret >= 0) {
         if (strcmp(value, "true") == 0) {
             ALOGV("%s: enabling two mic control", __func__);
+            adev->noise_suppression = true;
             ril_set_two_mic_control(&adev->ril, AUDIENCE, TWO_MIC_SOLUTION_ON);
         } else {
+            adev->noise_suppression = false;
             ALOGV("%s: disabling two mic control", __func__);
             ril_set_two_mic_control(&adev->ril, AUDIENCE, TWO_MIC_SOLUTION_OFF);
         }
@@ -1458,6 +1463,20 @@ static int adev_set_parameters(struct audio_hw_device *dev, const char *kvpairs)
 static char * adev_get_parameters(const struct audio_hw_device *dev,
                                   const char *keys)
 {
+
+    struct audio_device *adev = (struct audio_device *)dev;
+
+    ALOGV("%s: key: %s", __func__, keys);
+
+    if (strcmp(keys, "noise_suppression") == 0) {
+        if (adev->noise_suppression) {
+            return strdup("noise_suppression=on");
+        } else {
+            return strdup("noise_suppression=off");
+        }
+
+    }
+
     return strdup("");
 }
 
@@ -1472,8 +1491,27 @@ static int adev_set_voice_volume(struct audio_hw_device *dev, float volume)
 
     adev->voice_volume = volume;
 
-    if (adev->mode == AUDIO_MODE_IN_CALL)
-        ril_set_call_volume(&adev->ril, SOUND_TYPE_VOICE, volume);
+    if (adev->mode == AUDIO_MODE_IN_CALL) {
+        enum ril_sound_type sound_type;
+
+        switch (adev->out_device) {
+            case AUDIO_DEVICE_OUT_SPEAKER:
+                sound_type = SOUND_TYPE_SPEAKER;
+                break;
+            case AUDIO_DEVICE_OUT_WIRED_HEADSET:
+            case AUDIO_DEVICE_OUT_WIRED_HEADPHONE:
+                sound_type = SOUND_TYPE_HEADSET;
+                break;
+            case AUDIO_DEVICE_OUT_BLUETOOTH_SCO:
+            case AUDIO_DEVICE_OUT_ALL_SCO:
+                sound_type = SOUND_TYPE_BTVOICE;
+                break;
+            default:
+                sound_type = SOUND_TYPE_VOICE;
+        }
+
+        ril_set_call_volume(&adev->ril, sound_type, volume);
+    }
 
     return 0;
 }

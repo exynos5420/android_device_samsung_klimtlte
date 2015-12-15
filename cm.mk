@@ -3,6 +3,9 @@ $(call inherit-product, device/samsung/klimtlte/full_klimtlte.mk)
 # Inherit some common CM stuff.
 $(call inherit-product, vendor/cm/config/common_full_tablet_wifionly.mk)
 
+# Inherit more cyanogenmod stuff.
+$(call inherit-product, vendor/cm/config/telephony.mk)
+
 PRODUCT_NAME := cm_klimtlte
 PRODUCT_DEVICE := klimtlte
 

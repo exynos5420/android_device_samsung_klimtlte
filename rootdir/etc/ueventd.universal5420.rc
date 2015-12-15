@@ -75,3 +75,20 @@
 # USB Driver
 /dev/ttyUSB*              0660   system     usb
 /dev/usb/lp*              0660   system     usb
+/dev/ttyUSB0              0660   system     radio
+
+#RIL
+/dev/block/mmcblk0p13     0660   system     radio
+/dev/umts*                0660   system     radio
+
+# MDM 9x25
+/dev/block/mmcblk0p4      0660   system     radio
+/dev/block/mmcblk0p5      0660   system     radio
+/dev/block/mmcblk0p6      0660   system     radio
+/dev/block/mmcblk0p14     0660   system     radio
+/dev/mdm                  0660   system     radio
+/dev/hsic*                0660   system     radio
+/dev/diag                 0660   system     radio
+/dev/ks_hsic_bridge       0660   system     usb
+/dev/efs_hsic_bridge      0660   system     usb
+

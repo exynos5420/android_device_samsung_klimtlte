@@ -25,7 +25,11 @@ ro.hwui.text_large_cache_height=4096
 ro.hwui.fbo_cache_size=16
 
 # Radio
-ro.radio.noril=yes
+rild.libpath=/system/lib/libsec-ril.so
+rild.libargs=-d /dev/ttyS0
+ro.telephony.default_network=9
+ro.telephony.ril_class=ChagalllteRIL
+ro.ril.telephony.mqanelements=6
 
 # Randomly from stock
 ro.ril.gprsclass=10

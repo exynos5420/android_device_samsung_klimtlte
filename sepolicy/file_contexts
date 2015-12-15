@@ -53,3 +53,15 @@
 # update to MM
 /dev/block/platform/dw_mmc\.0/by-name/userdata     u:object_r:userdata_block_device:s0
 /dev/block/platform/dw_mmc\.0/by-name/cache        u:object_r:cache_block_device:s0
+
+# RIL
+/dev/ttyS0              u:object_r:radio_device:s0
+/dev/umts_boot0         u:object_r:radio_device:s0
+/dev/umts_csd           u:object_r:radio_device:s0
+/dev/umts_ipc0          u:object_r:radio_device:s0
+/dev/umts_dm0           u:object_r:radio_device:s0
+/dev/umts_log           u:object_r:radio_device:s0
+/dev/umts_rfs0          u:object_r:radio_device:s0
+/dev/umts_router        u:object_r:radio_device:s0
+/dev/block/mmcblk0p13   u:object_r:efs_block_device:s0
+
