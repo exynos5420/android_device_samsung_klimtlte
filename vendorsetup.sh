@@ -1,1 +1,1 @@
-add_lunch_combo cm_klimtwifi-userdebug
+add_lunch_combo cm_klimtlte-userdebug

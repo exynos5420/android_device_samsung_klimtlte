@@ -1,7 +1,7 @@
 #!/bin/bash
 
 set -e
-export DEVICE=klimtwifi
+export DEVICE=klimtlte
 export VENDOR=samsung
 
 if [ $# -eq 0 ]; then

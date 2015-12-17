@@ -16,7 +16,7 @@
 
 LOCAL_PATH := $(call my-dir)
 
-ifeq ($(TARGET_DEVICE),klimtwifi)
+ifeq ($(TARGET_DEVICE),klimtlte)
 
 include $(call all-makefiles-under,$(LOCAL_PATH))
 

@@ -1,13 +1,13 @@
-$(call inherit-product, device/samsung/klimtwifi/full_klimtwifi.mk)
+$(call inherit-product, device/samsung/klimtlte/full_klimtlte.mk)
 
 # Inherit some common CM stuff.
 $(call inherit-product, vendor/cm/config/common_full_tablet_wifionly.mk)
 
-PRODUCT_NAME := cm_klimtwifi
-PRODUCT_DEVICE := klimtwifi
+PRODUCT_NAME := cm_klimtlte
+PRODUCT_DEVICE := klimtlte
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
-    PRODUCT_MODEL=SM-T700 \
-    PRODUCT_NAME=klimtwifi \
-    PRODUCT_DEVICE=klimtwifi \
-    TARGET_DEVICE=klimtwifi
+    PRODUCT_MODEL=SM-T705 \
+    PRODUCT_NAME=klimtlte \
+    PRODUCT_DEVICE=klimtlte \
+    TARGET_DEVICE=klimtlte
