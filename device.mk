@@ -14,7 +14,7 @@
 # limitations under the License.
 #
 
-LOCAL_PATH := device/samsung/klimtwifi
+LOCAL_PATH := device/samsung/klimtlte
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
@@ -121,7 +121,6 @@ PRODUCT_PACKAGES += \
     libgdmcprov
 
 # Network tools
-
 PRODUCT_PACKAGES += \
     libpcap \
     tcpdump
@@ -129,7 +128,6 @@ PRODUCT_PACKAGES += \
 # OMX
 PRODUCT_PACKAGES += \
     libcsc
-
 
 # Permissions
 PRODUCT_COPY_FILES += \
@@ -171,7 +169,6 @@ PRODUCT_PACKAGES += \
 # Charger
 PRODUCT_PACKAGES += \
     charger_res_images
-
 
 # Radio (needed for audio controls even on wifi-only)
 PRODUCT_PACKAGES += \
@@ -223,4 +220,4 @@ $(call inherit-product, hardware/samsung_slsi-cm/exynos5/exynos5.mk)
 $(call inherit-product, hardware/samsung_slsi-cm/exynos5420/exynos5420.mk)
 
 # call the proprietary setup
-$(call inherit-product-if-exists, vendor/samsung/klimtwifi/klimtwifi-vendor.mk)
+$(call inherit-product-if-exists, vendor/samsung/klimtlte/klimtlte-vendor.mk)

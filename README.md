@@ -1,2 +1,2 @@
-SM-T700 device repo for CyangenMod.
+SM-T705 device repo for CyangenMod.
 
