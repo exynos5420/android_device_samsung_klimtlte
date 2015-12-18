@@ -151,6 +151,7 @@ BOARD_SEPOLICY_UNION += \
 	drmserver.te \
 	file.te \
 	gpsd.te \
+	hostapd.te \
 	init.te \
 	kernel.te \
 	macloader.te \
