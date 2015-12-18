@@ -156,7 +156,8 @@ BOARD_SEPOLICY_UNION += \
 	kernel.te \
 	macloader.te \
 	mediaserver.te \
-        service_contexts \
+	service_contexts \
+	netd.te \
 	servicemanager.te \
 	system_app.te \
 	system_server.te \
