@@ -21,16 +21,16 @@ import org.cyanogenmod.hardware.util.FileUtils;
 
 public class TapToWake {
 
-    private static final String CONTROL_PATH = "/sys/class/input/input1/wake_gesture";
+    private static final String CONTROL_PATH = "/data/misc/.taptowake";
     private static boolean sEnabled = true;
 
     public static boolean isSupported() {
-        File f = new File(CONTROL_PATH);
-        return f.exists();
+        return true;
     }
 
     public static boolean isEnabled()  {
-        return sEnabled;
+        File f = new File(CONTROL_PATH);
+        return "1".equals(FileUtils.readOneLine(CONTROL_PATH));
     }
 
     public static boolean setEnabled(boolean state)  {
