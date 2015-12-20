@@ -33,6 +33,7 @@
 #define INPUT_POWER4 "/sys/class/input/input4/enabled"
 #define INPUT_POWER3 "/sys/class/input/input3/enabled"
 #define INPUT_POWER2 "/sys/class/input/input2/enabled"
+#define WAKE_GESTURE_CONTROL_PATH "/sys/class/input/input1/wake_gesture"
 
 static void sysfs_write(char *path, char *s) {
     char buf[80];
@@ -69,6 +70,7 @@ static void power_set_interactive(struct power_module *module, int on)
     sysfs_write(INPUT_POWER5, on ? "1" : "0");
     sysfs_write(INPUT_POWER6, on ? "1" : "0");
     sysfs_write(INPUT_POWER7, on ? "1" : "0");
+    write_int(WAKE_GESTURE_CONTROL_PATH, on?0:1);
 }
 
 static void power_hint(struct power_module *module, power_hint_t hint,
