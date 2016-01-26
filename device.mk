@@ -78,6 +78,12 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     keystore.exynos5
 
+# libstlport
+# M removes libstlport, but some of our binary-only prebuilts need it, so we'll
+# add it back
+PRODUCT_PACKAGES += \
+    libstlport
+
 # Lights
 PRODUCT_PACKAGES += \
     lights.universal5420
