@@ -137,13 +137,13 @@
  *           in a package name as a "string16" to the consrtuctor. Since this
  *           lib only services GPS library, it is easy for us to just do that
  *           and this provide the constructor that the GPS library wants.
- *           The package name we use if "gps.manta". Why not?
+ *           The package name we use if "gps.universal5420". Why not?
  */
 void _ZN7android13SensorManagerC1Ev(void *sensorMgr)
 {
     void *string;
 
-    _ZN7android8String16C1EPKc(&string, "gps.manta");
+    _ZN7android8String16C1EPKc(&string, "gps.universal5420");
     _ZN7android13SensorManagerC1ERKNS_8String16E(sensorMgr, &string);
     _ZN7android8String16D1Ev(&string);
 }
