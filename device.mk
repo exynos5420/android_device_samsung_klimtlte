@@ -176,10 +176,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     sensors.universal5420
 
-# Torch
-PRODUCT_PACKAGES += \
-    Torch
-
 # Wifi
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
