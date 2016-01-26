@@ -146,28 +146,7 @@ BOARD_USES_SCALER := true
 
 # SELinux
 BOARD_SEPOLICY_DIRS += \
-	device/samsung/klimtwifi/sepolicy
-
-BOARD_SEPOLICY_UNION += \
-	file_contexts \
-	device.te \
-	domain.te \
-	drmserver.te \
-	file.te \
-	gpsd.te \
-	hostapd.te \
-	init.te \
-	kernel.te \
-	macloader.te \
-	mediaserver.te \
-	service_contexts \
-	netd.te \
-	servicemanager.te \
-	system_app.te \
-	system_server.te \
-	sswap.te \
-	vold.te \
-	wpa.te
+    device/samsung/klimtwifi/sepolicy
 
 # SurfaceFlinger
 BOARD_USES_SYNC_MODE_FOR_MEDIA := true
