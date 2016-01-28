@@ -51,6 +51,13 @@ PRODUCT_PACKAGES += \
     camera.universal5420 \
     libhwjpeg
 
+PRODUCT_PROPERTY_OVERRIDES += \
+    camera2.portability.force_api=1
+
+# Camera permissions
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/init.exynos.cam.sh:system/etc/init.exynos.cam.sh
+
 # Filesystem management tools
 PRODUCT_PACKAGES += \
     make_ext4fs \
