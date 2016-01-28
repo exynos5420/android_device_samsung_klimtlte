@@ -11,6 +11,10 @@ on init
     # Support legacy paths
     symlink /sdcard /mnt/sdcard
     symlink /sdcard /storage/sdcard0
+    symlink /sdcard1 /storage/sdcard1
+    symlink /sdcard1 /mnt/extSdCard
+    symlink /sdcard1 /external_sd
+    symlink /storage/usbdisk /mnt/usbdisk
 
     mkdir /efs 0771 radio system
     mkdir /preload 0774 root root
