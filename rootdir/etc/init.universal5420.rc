@@ -3,6 +3,9 @@ import init.universal5420.wifi.rc
 import init.samsung.rc
 
 on init
+
+    export LD_PRELOAD "/system/lib/libsamsung_symbols.so"
+
     # Set permissions for persist partition
     mkdir /persist 0771 system system
     mkdir /mnt/shell/container 0700 system system
