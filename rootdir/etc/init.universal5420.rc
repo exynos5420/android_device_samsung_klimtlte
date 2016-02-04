@@ -5,6 +5,7 @@ import init.samsung.rc
 on init
 
     export LD_PRELOAD "/system/lib/libsamsung_symbols.so"
+    export LD_SHIM_LIBS /system/bin/gpsd|libdmitry.so
 
     # Set permissions for persist partition
     mkdir /persist 0771 system system
