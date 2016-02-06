@@ -1,0 +1,3 @@
+allow sysinit self:capability { sys_module dac_override };
+allow sysinit userinit_exec:file getattr;
+allow sysinit kernel:system module_request;

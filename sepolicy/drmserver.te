@@ -1,1 +1,2 @@
 allow drmserver secmem_device:chr_file rw_file_perms;
+allow drmserver kernel:system module_request;
