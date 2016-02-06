@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2014 The CyanogenMod Project
+ * Copyright (C) 2015 The CyanogenMod Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,6 +19,11 @@
 #define CAMERA_PARAMETERS_EXTRA_C \
 const char CameraParameters::KEY_CITYID[] = "cityid"; \
 const char CameraParameters::KEY_WEATHER[] = "weather"; \
+const char CameraParameters::ISO_AUTO[] = "auto"; \
+const char CameraParameters::ISO_100[] = "100"; \
+const char CameraParameters::ISO_200[] = "200"; \
+const char CameraParameters::ISO_400[] = "400"; \
+const char CameraParameters::ISO_800[] = "800"; \
 \
 int CameraParameters::getInt64(const char *key) const { return -1; } \
 extern "C" { \
@@ -34,6 +39,11 @@ CAMERA_PARAMETERS_EXTRA_C_DURATION_TIMER \
 #define CAMERA_PARAMETERS_EXTRA_H \
     static const char KEY_CITYID[]; \
     static const char KEY_WEATHER[]; \
+    static const char ISO_AUTO[]; \
+    static const char ISO_100[]; \
+    static const char ISO_200[]; \
+    static const char ISO_400[]; \
+    static const char ISO_800[]; \
     \
     int getInt64(const char *key) const; \
     \
