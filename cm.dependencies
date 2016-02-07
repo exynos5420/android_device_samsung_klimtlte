@@ -22,6 +22,10 @@
     {
         "repository": "android_hardware_samsung_slsi_openmax",
         "target_path": "hardware/samsung_slsi/openmax"
-    }
+    },
+    {
+        "repository": "android_external_sony_boringssl-compat",
+        "target_path": "external/sony/boringssl-compat"
+    },
 ]
 
