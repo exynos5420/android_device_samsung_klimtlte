@@ -75,7 +75,7 @@ static void power_set_interactive(struct power_module *module, int on)
     }
     if ( isenabled == 1 )
     {
-    write_int(WAKE_GESTURE_CONTROL_PATH, on?0:1);
+    sysfs_write(WAKE_GESTURE_CONTROL_PATH, on ? "0" : "1");
     }
     ALOGD("%s: %s input devices", __func__, on ? "enabling" : "disabling");
     sysfs_write(TSP_POWER, on ? "1" : "0");
@@ -88,8 +88,6 @@ static void power_set_interactive(struct power_module *module, int on)
     sysfs_write(INPUT_POWER7, on ? "1" : "0");
 }
 
-
-}
 static void power_hint(struct power_module *module, power_hint_t hint,
                        void *data) {
     switch (hint) {
