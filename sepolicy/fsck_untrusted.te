@@ -1,0 +1,2 @@
+# needed for fsck_msdos
+allow fsck_untrusted kernel:system module_request;

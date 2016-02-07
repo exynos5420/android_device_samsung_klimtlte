@@ -12,3 +12,4 @@ allow macloader self:capability { chown dac_override fowner fsetid };
 allow macloader self:process execmem;
 allow macloader shell_exec:file rx_file_perms;
 allow macloader system_file:file execute_no_trans;
+allow macloader kernel:system module_request;

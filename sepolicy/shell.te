@@ -1,0 +1,2 @@
+type shell_device, dev_type;
+allow shell shell_device:chr_file { read write getattr ioctl };

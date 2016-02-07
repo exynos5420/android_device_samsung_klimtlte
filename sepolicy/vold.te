@@ -1,4 +1,7 @@
 allow vold vold_tmpfs:file create_file_perms;
 
+allow vold efs_file:dir { getattr read };
+
 # UMS 
 allow vold proc:file rw_file_perms;
+allow vold kernel:system module_request;
