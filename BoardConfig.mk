@@ -82,9 +82,7 @@ BOARD_USES_FIMGAPI_V4L2 := false
 
 # Graphics
 USE_OPENGL_RENDERER := true
-BOARD_EGL_CFG := $(LOCAL_PATH)/configs/egl.cfg
 NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
-#BOARD_EGL_NEEDS_HANDLE_VALUE := true
 OVERRIDE_RS_DRIVER := libRSDriverArm.so
 
 # Exynos display
