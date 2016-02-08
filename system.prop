@@ -24,10 +24,6 @@ ro.hwui.text_large_cache_width=4096
 ro.hwui.text_large_cache_height=4096
 ro.hwui.fbo_cache_size=16
 
-# USB
-persist.sys.isUsbOtgEnabled=true
-persist.sys.usb.config=mtp
-
 # Radio
 ro.radio.noril=yes
 
