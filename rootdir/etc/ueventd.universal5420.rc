@@ -67,7 +67,7 @@
 /dev/mobicore-user        0666   radio     	system
 
 # Secure MEM driver
-/dev/s5p-smem             0660   system     system
+/dev/s5p-smem             0660   drm        drmrpc
 
 # vfs
 /dev/vfsspi        0660   system     system
