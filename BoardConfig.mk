@@ -136,6 +136,9 @@ BOARD_SYSTEMIMAGE_JOURNAL_SIZE := 0
 # PowerHAL
 TARGET_POWERHAL_VARIANT := klimtwifi
 
+# Use these flags if the board has a ext4 partition larger than 2gb
+BOARD_HAS_LARGE_FILESYSTEM := true
+
 # Recovery
 TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/etc/fstab.universal5420
 TARGET_USERIMAGES_USE_EXT4 := true
