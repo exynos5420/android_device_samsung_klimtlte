@@ -7,3 +7,4 @@ allow sysfs_type tmpfs:filesystem associate;
 type sysfs_mipi_writable, fs_type, sysfs_type, mlstrustedobject;
 type sysfs_multipdp_writable, fs_type, sysfs_type, mlstrustedobject;
 type sysfs_usb_power_writable, fs_type, sysfs_type, mlstrustedobject;
+type vcs_data_file, file_type, data_file_type;
