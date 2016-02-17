@@ -41,7 +41,7 @@ TARGET_SCREEN_WIDTH := 1600
 PRODUCT_PACKAGES += \
     fingerprintd \
     fingerprint.universal5420 \
-    ValidityService
+    validityService
 
 # Keylayouts
 PRODUCT_COPY_FILES += \
@@ -66,8 +66,8 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/tablet_core_hardware.xml:system/etc/permissions/tablet_core_hardware.xml \
     frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
     frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
-    frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml
-#    frameworks/native/data/etc/android.hardware.fingerprint.xml:system/etc/permissions/android.hardware.fingerprint.xml
+    frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
+    frameworks/native/data/etc/android.hardware.fingerprint.xml:system/etc/permissions/android.hardware.fingerprint.xml
 
 PRODUCT_PACKAGES += \
     fstab.universal5420 \

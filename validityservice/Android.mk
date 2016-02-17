@@ -16,18 +16,14 @@ LOCAL_PATH:= $(call my-dir)
 
 include $(CLEAR_VARS)
 
-LOCAL_PACKAGE_NAME := validityService
-
 LOCAL_SRC_FILES := $(call all-java-files-under, src)
 
 LOCAL_RESOURCE_DIR := $(LOCAL_PATH)/res
 LOCAL_AAPT_FLAGS := --auto-add-overlay
 
-LOCAL_PROGUARD_FLAG_FILES := proguard.flags
-
+LOCAL_PACKAGE_NAME := validityService
 LOCAL_CERTIFICATE := platform
 LOCAL_PRIVILEGED_MODULE := true
-
-LOCAL_JACK_ENABLED := disabled
+LOCAL_PROGUARD_FLAG_FILES := proguard.flags
 
 include $(BUILD_PACKAGE)
