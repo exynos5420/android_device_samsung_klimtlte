@@ -135,6 +135,14 @@ on boot
 # CS socket
     mkdir /dev/socket/cs_socket 0770 system system
 
+# Fingerprint
+    mkdir /dev/validity 0770 system system
+    mkdir /data/validity 0770 system system
+
+# Fingerprint Sensor
+    chown system radio /sys/class/fingerprint/fingerprint/type_check
+
+
 # Permissions for PowerHAL
     chown system system /sys/class/input/input10/enabled
     chmod 0660 /sys/class/input/input10/enabled
@@ -548,6 +556,17 @@ service cs_service /system/bin/cs
     user system
     group system
     disabled
+
+service fingerprintd /system/bin/fingerprintd
+    class late_start
+    user system
+    group input
+
+# SENSOR FRAMEWORK : starts fingerprintService
+service vcsFPService /system/bin/vcsFPService
+    class late_start
+    user system
+    group system
 
 on property:sys.mobicoredaemon.enable=true
     start cs_service
