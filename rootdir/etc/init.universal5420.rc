@@ -105,12 +105,15 @@ on boot
     setprop ro.product.device universal_5420
 #    chmod 0666 /dev/pvrsrvkm
 
-# mobicore
+    # mobicore
     mkdir /data/app/mcRegistry 0775 system system
+    mkdir /system/app/mcRegistry/TbStorage 0775 system system
     chmod 0700 /dev/mobicore
     chmod 0666 /dev/mobicore-user
+    chmod 0660 /dev/s5p-smem
     chown system system /dev/mobicore
     chown radio system /dev/mobicore-user
+    chown system system /dev/s5p-smem
 
 # DRK permission
     mkdir /efs/prov 0770 radio system
@@ -326,8 +329,8 @@ on boot
     chown system radio /sys/module/asv_exynos/parameters/asv_group
 
 # MTP permission
-    chmod 0660 /dev/usb_mtp_gadget
-    chown system mtp /dev/usb_mtp_gadget
+    chmod 0660 /dev/mtp_usb
+    chown system mtp /dev/mtp_usb
 
 # terminal mode
 	chmod 0660 /sys/class/android_usb/android0/terminal_version
@@ -485,7 +488,7 @@ service gpsd /system/bin/gpsd -c /system/etc/gps.xml
     seclabel u:r:gpsd:s0
 
 # MobiCore startup
-service mobicore /system/bin/mcDriverDaemon -r /system/app/FFFFFFFF000000000000000000000001.drbin -r /system/app/mcRegistry/ffffffffd0000000000000000000000a.tlbin
+service mobicore /system/bin/mcDriverDaemon -r /system/app/FFFFFFFF000000000000000000000001.drbin -r /system/app/mcRegistry/ffffffffd0000000000000000000000a.tlbin -r /system/app/mcRegistry/ffffffffd00000000000000000000016.tlbin
     class core
     user system
     group system
