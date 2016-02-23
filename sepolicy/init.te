@@ -6,9 +6,6 @@ allow init tmpfs:lnk_file create;
 allow init wifi_efs_file:file getattr;
 allow init kmsg_device:chr_file write;
 
-domain_trans(init, cpboot-daemon_exec, cpboot-daemon)
-domain_trans(init, gpsd_exec, gpsd)
-
 # LD_SHIM_LIBS
 allow init gpsd:process { noatsecure };
 allow init mediaserver:process { noatsecure };
