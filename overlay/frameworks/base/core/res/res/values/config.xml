@@ -257,4 +257,7 @@
       it causes the device to wake up.
       The default is false. -->
     <bool name="config_lidControlsSleep">true</bool>
+
+    <!-- Our modem doesn't support this query yet -->
+    <string name="config_radio_access_family">GSM|WCDMA|LTE</string>
 </resources>
