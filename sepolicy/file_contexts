@@ -51,8 +51,9 @@
 /dev/block/vnswap0      u:object_r:sswap_device:s0
 
 # update to MM
-/dev/block/platform/dw_mmc\.0/by-name/userdata     u:object_r:userdata_block_device:s0
-/dev/block/platform/dw_mmc\.0/by-name/cache        u:object_r:cache_block_device:s0
+/dev/block/platform/dw_mmc\.0/by-name/USERDATA     u:object_r:userdata_block_device:s0
+/dev/block/platform/dw_mmc\.0/by-name/CACHE        u:object_r:cache_block_device:s0
+/dev/block/platform/dw_mmc\.0/by-name/EFS       u:object_r:efs_block_device:s0
 
 # RIL
 /dev/ttyS0              u:object_r:radio_device:s0
