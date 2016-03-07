@@ -17,6 +17,11 @@ on fs
     chown radio system /sys/devices/virtual/misc/umts_dm0/dm_state
     chown radio radio /sys/devices/platform/s5p-ehci/ehci_cpu_core
 
+# Parse hardware revision (needs to happen before cbd starts)
+service modemloader /system/bin/modemloader
+    class core
+    oneshot
+
 service cpboot-daemon /sbin/cbd -d -txmm7160 -bh -mh -p 13
     class main
     user root
