@@ -491,6 +491,7 @@ service mobicore /system/bin/mcDriverDaemon -r /system/app/FFFFFFFF0000000000000
     class core
     user system
     group system
+    oneshot
 
 # LPM
 on charger
