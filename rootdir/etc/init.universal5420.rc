@@ -181,6 +181,11 @@ on boot
     chown radio system /sys/class/sec/sec_key/wakeup_keys
     write /sys/class/sec/sec_key/wakeup_keys 116,172
 
+# Fingerprint
+    mkdir /dev/validity 0770 system system
+    mkdir /data/validity 0770 system system
+    chown system radio /sys/class/fingerprint/fingerprint/type_check
+
 # SENSORS
 # Accelerometer_sensor
     chown system radio /sys/class/sensors/accelerometer_sensor/raw_data
@@ -434,6 +439,12 @@ service watchdogd /sbin/watchdogd 10 20
     seclabel u:r:watchdogd:s0
 	disabled
 
+# Fingerprint
+service fingerprintd /system/bin/fingerprintd
+    class late_start
+    user system
+    group input
+
 # Bluetooth LE 2 wired Test
 service LE_dut_cmd_on /system/bin/bttestintf enable
     group bluetooth net_bt_admin
@@ -548,6 +559,12 @@ service cs_service /system/bin/cs
 
 on property:sys.mobicoredaemon.enable=true
     start cs_service
+
+# SENSOR FRAMEWORK : starts fingerprintService
+service vcsFPService /system/bin/vcsFPService
+    class late_start
+    user system
+    group system
 
 # umount service
 service umount_service /system/bin/umount /preload
