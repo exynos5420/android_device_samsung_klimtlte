@@ -10,3 +10,10 @@ allow init kmsg_device:chr_file write;
 allow init gpsd:process { noatsecure };
 allow init mediaserver:process { noatsecure };
 allow init rild:process { noatsecure };
+
+allow init log_device:chr_file write;
+allow init property_socket:sock_file write;
+allow init radio_device:chr_file write;
+#allow init rootfs:file execute_no_trans;
+#allow init shell_exec:file execute_no_trans;
+#allow init system_file:file execute_no_trans;

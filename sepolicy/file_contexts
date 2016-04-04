@@ -40,9 +40,14 @@
 /system/bin/drmserver.samsung   u:object_r:drmserver_exec:s0
 /system/bin/gpsd                u:object_r:gpsd_exec:s0
 
+/data/CameraID.txt          u:object_r:camera_data_file:s0
+
+/data/camera(/.*)?       u:object_r:camera_data_file:s0
+
 /sys/devices/platform/bcm4339_bluetooth/rfkill/rfkill0/state -- u:object_r:sysfs_bluetooth_writable:s0
 /sys/devices/platform/bcm4339_bluetooth/rfkill/rfkill0/type -- u:object_r:sysfs_bluetooth_writable:s0
 /sys/devices/virtual/sec/sec_touchkey/tsp_keys_enabled u:object_r:sysfs_input_file:s0
+/sys/class/mdnie/mdnie/scenario u:object_r:sysfs_scenario_file:s0
 
 #shell: reenable init.d
 /dev/ttySAC2            u:object_r:shell_device:s0

@@ -1,5 +1,4 @@
 allow toolbox kernel:system module_request;
-allow toolbox self:capability dac_override;
-allow toolbox system_data_file:dir { write add_name };
-allow toolbox system_data_file:file open;
-allow toolbox self:capability { fowner chown fsetid };
+allow toolbox camera_data_file:dir { create write add_name };
+allow toolbox camera_data_file:file { open write create setattr };
+allow toolbox self:capability { dac_override fowner chown fsetid };
