@@ -34,11 +34,11 @@
 
 /data/.wifiver.info     u:object_r:wifi_data_file:s0
 
-/system/bin/macloader   u:object_r:macloader_exec:s0
-/system/bin/mcDriverDaemon  --  u:object_r:tee_exec:s0
-# /system/bin/drmserver.samsung   u:object_r:drmserver_exec:s0
-/system/bin/cbd              -- u:object_r:cpboot-daemon_exec:s0
-/system/bin/gpsd                u:object_r:gpsd_exec:s0
+/system/bin/macloader             u:object_r:macloader_exec:s0
+/system/bin/modemloader      -- u:object_r:modemloader_exec:s0
+/system/bin/mcDriverDaemon        u:object_r:tee_exec:s0
+/sbin/cbd                         u:object_r:cpboot-daemon_exec:s0
+/system/bin/gpsd                  u:object_r:gpsd_exec:s0
 
 # efs files
 /efs/bluetooth(/.*)?    u:object_r:bluetooth_data_file:s0
