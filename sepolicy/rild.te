@@ -8,6 +8,7 @@ allow rild app_efs_file:file r_file_perms;
 # /dev/mbin0
 allow rild block_device:dir r_dir_perms;
 allow rild emmcblk_device:blk_file r_file_perms;
+allow rild efs_block_device:blk_file r_file_perms;
 
 # /dev/umts_boot0, /dev/umts_ipc0
 allow rild mif_device:chr_file rw_file_perms;

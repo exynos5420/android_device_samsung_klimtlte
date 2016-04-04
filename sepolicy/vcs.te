@@ -10,7 +10,7 @@ allow vcs system_app:process signull;
 allow vcs vcs_data_file:dir create_dir_perms;
 allow vcs vcs_data_file:file create_file_perms;
 
-allow vcs vcs_device:dir create_dir_perms;
+allow vcs vcs_device:dir { add_name create_dir_perms };
 allow vcs vcs_device:file create_file_perms;
 allow vcs vcs_device:fifo_file create_file_perms;
 allow vcs vcs_device:chr_file create_file_perms;
