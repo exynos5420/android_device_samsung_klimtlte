@@ -1,3 +1,10 @@
+domain_trans(init, rootfs, cpboot-daemon)
+domain_trans(init, cpboot-daemon_exec, cpboot-daemon)
+domain_trans(init, gpsd_exec, gpsd)
+
+# /dev/block/mmcblk0p[0-9]
+allow init emmcblk_device:blk_file rw_file_perms;
+
 allow init drmserver_service:service_manager add;
 allow init sswap:process { transition siginh rlimitinh };
 allow init kernel:system module_request;
@@ -11,9 +18,3 @@ allow init gpsd:process { noatsecure };
 allow init mediaserver:process { noatsecure };
 allow init rild:process { noatsecure };
 
-allow init log_device:chr_file write;
-allow init property_socket:sock_file write;
-allow init radio_device:chr_file write;
-#allow init rootfs:file execute_no_trans;
-#allow init shell_exec:file execute_no_trans;
-#allow init system_file:file execute_no_trans;

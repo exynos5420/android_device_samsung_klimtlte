@@ -5,3 +5,7 @@ allow vold efs_file:dir { getattr read ioctl open };
 # UMS 
 allow vold proc:file rw_file_perms;
 allow vold kernel:system module_request;
+
+# /dev/block/mmcblk0p[0-9]
+allow vold emmcblk_device:dir create_dir_perms;
+allow vold emmcblk_device:blk_file create_file_perms;

@@ -3,8 +3,8 @@ allow system_server sysfs_input_file:file rw_file_perms;
 # /efs
 allow system_server efs_file:dir rw_dir_perms;
 
-# /efs/prox_cal
-allow system_server efs_file:file r_file_perms;
+# /dev/mbin0
+allow system_server emmcblk_device:dir search;
 
 # WifiMachine
 allow system_server self:capability { sys_module };
