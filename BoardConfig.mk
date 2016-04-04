@@ -65,7 +65,7 @@ COMMON_GLOBAL_CFLAGS += -DFORCE_SCREENSHOT_CPU_PATH
 # Kernel
 BOARD_KERNEL_BASE := 0x10000000
 BOARD_KERNEL_PAGESIZE := 2048
-TARGET_KERNEL_CONFIG := cyanogenmod_klimtlte_defconfig
+TARGET_KERNEL_CONFIG := cyanogenmod_deathly_klimtlte_defconfig
 TARGET_KERNEL_SOURCE := kernel/samsung/klimtwifi
 
 # Charging mode
