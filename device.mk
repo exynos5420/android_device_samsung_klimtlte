@@ -92,10 +92,10 @@ PRODUCT_PROPERTY_OVERRIDES := \
     ro.com.android.dataroaming=true
 
 # FingerPrint
-PRODUCT_PACKAGES += \
-    fingerprintd \
-    fingerprint.universal5420 \
-    ValidityService
+#PRODUCT_PACKAGES += \
+#    fingerprintd \
+#    fingerprint.universal5420 \
+#    ValidityService
 
 # Keystore
 PRODUCT_PACKAGES += \
@@ -164,8 +164,8 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.bluetooth.xml:system/etc/permissions/android.hardware.bluetooth.xml \
     frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
     frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
-    frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
-    frameworks/native/data/etc/android.hardware.fingerprint.xml:system/etc/permissions/android.hardware.fingerprint.xml
+    frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml
+#    frameworks/native/data/etc/android.hardware.fingerprint.xml:system/etc/permissions/android.hardware.fingerprint.xml
 
 # Power
 PRODUCT_PACKAGES += \
@@ -254,3 +254,6 @@ $(call inherit-product, hardware/samsung_slsi-cm/exynos5420/exynos5420.mk)
 
 # call the proprietary setup
 $(call inherit-product-if-exists, vendor/samsung/klimtlte/klimtlte-vendor.mk)
+
+# call the proprietary setup
+$(call inherit-product-if-exists, vendor/samsung/klimt-common/klimt-common-vendor.mk)
