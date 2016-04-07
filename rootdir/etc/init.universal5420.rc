@@ -92,7 +92,6 @@ service iprenew_bt-pan /system/bin/dhcpcd -n
 	oneshot
 
 on boot
-    mount debugfs /sys/kernel/debug /sys/kernel/debug
 
     # Reduce reserved lowmem from ~48MB to ~12MB
     write /proc/sys/vm/lowmem_reserve_ratio "128 128"
