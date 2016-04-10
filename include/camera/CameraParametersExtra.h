@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 The CyanogenMod Project
+ * Copyright (C) 2016 The CyanogenMod Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,10 +20,17 @@
 const char CameraParameters::KEY_CITYID[] = "cityid"; \
 const char CameraParameters::KEY_WEATHER[] = "weather"; \
 const char CameraParameters::ISO_AUTO[] = "auto"; \
-const char CameraParameters::ISO_100[] = "100"; \
-const char CameraParameters::ISO_200[] = "200"; \
-const char CameraParameters::ISO_400[] = "400"; \
+const char CameraParameters::ISO_NIGHT[] = "night"; \
+const char CameraParameters::ISO_SPORTS[] = "sports"; \
+const char CameraParameters::ISO_6400[] = "6400"; \
+const char CameraParameters::ISO_3200[] = "3200"; \
+const char CameraParameters::ISO_1600[] = "1600"; \
 const char CameraParameters::ISO_800[] = "800"; \
+const char CameraParameters::ISO_400[] = "400"; \
+const char CameraParameters::ISO_200[] = "200"; \
+const char CameraParameters::ISO_100[] = "100"; \
+const char CameraParameters::ISO_80[] = "80"; \
+const char CameraParameters::ISO_50[] = "50"; \
 \
 int CameraParameters::getInt64(const char *key) const { return -1; } \
 extern "C" { \
@@ -40,10 +47,17 @@ CAMERA_PARAMETERS_EXTRA_C_DURATION_TIMER \
     static const char KEY_CITYID[]; \
     static const char KEY_WEATHER[]; \
     static const char ISO_AUTO[]; \
-    static const char ISO_100[]; \
-    static const char ISO_200[]; \
-    static const char ISO_400[]; \
+    static const char ISO_NIGHT[]; \
+    static const char ISO_SPORTS[]; \
+    static const char ISO_6400[]; \
+    static const char ISO_3200[]; \
+    static const char ISO_1600[]; \
     static const char ISO_800[]; \
+    static const char ISO_400[]; \
+    static const char ISO_200[]; \
+    static const char ISO_100[]; \
+    static const char ISO_80[]; \
+    static const char ISO_50[]; \
     \
     int getInt64(const char *key) const; \
     \
