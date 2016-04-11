@@ -91,12 +91,6 @@ PRODUCT_PROPERTY_OVERRIDES := \
     keyguard.no_require_sim=true \
     ro.com.android.dataroaming=true
 
-# FingerPrint
-PRODUCT_PACKAGES += \
-    fingerprintd \
-    fingerprint.universal5420 \
-    ValidityService
-
 # Keystore
 PRODUCT_PACKAGES += \
     keystore.exynos5

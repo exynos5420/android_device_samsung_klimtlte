@@ -1,6 +1,1 @@
 allow tee kernel:system module_request;
-
-allow tee apk_data_file:dir { write create add_name };
-
-allow tee vcs_data_file:dir create_dir_perms;
-allow tee vcs_data_file:file create_file_perms;

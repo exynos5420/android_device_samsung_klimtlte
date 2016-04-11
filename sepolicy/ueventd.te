@@ -1,7 +1,5 @@
 allow ueventd kernel:system module_request;
 
-allow ueventd vcs_device:chr_file create_file_perms;
-
 # /dev/block/mmcblk0p[0-9]
 allow init emmcblk_device:blk_file { setattr getattr open read write append ioctl lock };
 
