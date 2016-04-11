@@ -12,8 +12,6 @@ allow init tmpfs:lnk_file create_file_perms;
 
 allow init mif_device:chr_file { write ioctl };
 
-allow init camera_data_file:file execute_no_trans;
-
 allow init log_device:chr_file write;
 
 allow init property_socket:sock_file write;

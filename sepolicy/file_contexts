@@ -62,10 +62,6 @@
 
 /dev/block/mmcblk0p[0-9]*        u:object_r:emmcblk_device:s0
 
-/data/CameraID.txt               u:object_r:camera_data_file:s0
-/system/etc/init.exynos.cam.sh   u:object_r:camera_data_file:s0
-/data/camera(/.*)?               u:object_r:camera_data_file:s0
-
 /sys/devices/platform/bcm4339_bluetooth/rfkill/rfkill0/state -- u:object_r:sysfs_bluetooth_writable:s0
 /sys/devices/platform/bcm4339_bluetooth/rfkill/rfkill0/type -- u:object_r:sysfs_bluetooth_writable:s0
 /sys/devices/virtual/sec/sec_touchkey/tsp_keys_enabled u:object_r:sysfs_input_file:s0
