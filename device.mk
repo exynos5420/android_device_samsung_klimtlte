@@ -227,4 +227,4 @@ $(call inherit-product-if-exists, frameworks/native/build/phone-xxhdpi-2048-dalv
 $(call inherit-product-if-exists, vendor/samsung/klimtlte/klimtlte-vendor.mk)
 
 # call the proprietary setup
-$(call inherit-product-if-exists, vendor/samsung/klimt-common/klimt-common-vendor.mk)
+$(call inherit-product-if-exists, vendor/samsung/tabs-common/tabs-common-vendor.mk)
