@@ -419,6 +419,9 @@ on fs
     chown system radio /sys/class/audio/earjack/key_state
     chown system radio /sys/class/audio/earjack/state
 
+# create camera directory
+    mkdir /data/camera 0700 media media
+
 # GPS
     chown root system /dev/ttySAC1
     chmod 0660 /dev/ttySAC1
