@@ -1,7 +1,0 @@
-allow ueventd kernel:system module_request;
-
-# /dev/block/mmcblk0p[0-9]
-allow init emmcblk_device:blk_file { setattr getattr open read write append ioctl lock };
-
-# /sys/devices/virtual/misc/multipdp/uevent
-allow ueventd sysfs_multipdp_writable:file rw_file_perms;

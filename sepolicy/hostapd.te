@@ -1,1 +1,0 @@
-allow hostapd efs_file:dir search;

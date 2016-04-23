@@ -1,5 +1,0 @@
-allow fsck userdata_block_device:blk_file rw_file_perms;
-allow fsck cache_block_device:blk_file rw_file_perms;
-allow fsck efs_block_device:blk_file rw_file_perms;
-allow fsck kernel:system module_request;
-allow fsck emmcblk_device:blk_file rw_file_perms;

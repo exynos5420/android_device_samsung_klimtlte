@@ -1,2 +1,0 @@
-allow toolbox kernel:system module_request;
-allow toolbox self:capability { dac_override fowner chown fsetid };

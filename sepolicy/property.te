@@ -1,5 +1,2 @@
-# Modemloader
-type modemloader_prop, property_type;
-
 # Camera
 type camera_prop, property_type;
