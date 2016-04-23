@@ -26,6 +26,8 @@
 /dev/video44            u:object_r:camera_device:s0
 /dev/media2             u:object_r:camera_device:s0
 
+/system/bin/modemloader      u:object_r:modemloader_exec:s0
+
 /dev/block/mmcblk0p[0-9]*    u:object_r:emmcblk_device:s0
 
 /efs/bluetooth(/.*)?    u:object_r:bluetooth_data_file:s0
