@@ -39,6 +39,7 @@
 /dev/umts.*                  u:object_r:mif_device:s0
 /dev/ehci_power              u:object_r:mif_device:s0
 
+/sys/class/lcd(/.*)?         -- u:object_r:sysfs_writable:s0
 /sys/devices/15510000.usb/ehci_power        u:object_r:sysfs_usb_power_writable:s0
 /sys/devices/10f24000.mipi-lli/lli_control  u:object_r:sysfs_mipi_writable:s0
 
