@@ -1,3 +1,6 @@
 type secmem_device, dev_type;
 # Unified Memory Management device
 type ump_device, dev_type;
+
+# /dev/block/mmcblk0p[0-9] (/dev/mbin0)
+type emmcblk_device, file_type;
