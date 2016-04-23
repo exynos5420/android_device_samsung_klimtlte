@@ -1,2 +1,0 @@
-# UMS: rw access to files in /dev/block/vold
-allow kernel block_device:blk_file rw_file_perms;

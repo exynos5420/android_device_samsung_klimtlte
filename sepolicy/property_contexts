@@ -1,0 +1,5 @@
+# Camera
+persist.sys.camera       u:object_r:camera_prop:s0
+
+# Modemloader
+hw.revision              u:object_r:modemloader_prop:s0
