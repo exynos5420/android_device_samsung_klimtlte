@@ -102,6 +102,7 @@ on boot
 
     setprop ro.build.product universal_5420
     setprop ro.product.device universal_5420
+    chown root radio /proc/cmdline
 #    chmod 0666 /dev/pvrsrvkm
 
     # mobicore
