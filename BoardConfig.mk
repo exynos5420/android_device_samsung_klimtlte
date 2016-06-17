@@ -155,23 +155,28 @@ BOARD_SEPOLICY_DIRS += \
 	device/samsung/klimtlte/sepolicy
 
 BOARD_SEPOLICY_UNION += \
-	file_contexts \
+    cpboot-daemon.te \
 	device.te \
 	domain.te \
 	drmserver.te \
 	file.te \
+	file_contexts \
+    fsck.te
 	gpsd.te \
 	init.te \
-	kernel.te \
 	macloader.te \
 	mediaserver.te \
-        service_contexts \
+    modemloader.te \
+    platform_app.te \
+    property.te \
+    property_contexts \
+    rild.te \
+    service_contexts \
 	servicemanager.te \
 	system_app.te \
 	system_server.te \
-	sswap.te \
+	tee.te \
 	vold.te \
-	rild.te \
 	wpa.te
 
 # SurfaceFlinger
