@@ -86,9 +86,11 @@ BOARD_USES_FIMGAPI_V4L2 := false
 
 # Graphics
 USE_OPENGL_RENDERER := true
-OVERRIDE_RS_DRIVER := libRSDriverArm.so
 BOARD_EGL_CFG := $(LOCAL_PATH)/configs/egl.cfg
 NUM_FRAMEBUFFER_SURFACE_BUFFERS := 5
+
+# Renderscript
+BOARD_OVERRIDE_RS_CPU_VARIANT_32 := cortex-a53
 
 # HWCServices
 BOARD_USES_HWC_SERVICES := true
