@@ -131,8 +131,8 @@ BOARD_FLASH_BLOCK_SIZE := 4096
 # Disable journaling on system.img to save space
 BOARD_SYSTEMIMAGE_JOURNAL_SIZE := 0
 
-# PowerHAL
-TARGET_POWERHAL_VARIANT := klimtlte
+# Unified PowerHAL
+TARGET_POWERHAL_VARIANT := samsung
 
 # Recovery
 COMMON_GLOBAL_CFLAGS += -DNO_SECURE_DISCARD
