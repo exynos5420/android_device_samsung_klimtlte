@@ -209,7 +209,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
  ro.bq.gpu_to_cpu_unsupported=1
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.carrier=unknown 
+    ro.carrier=unknown
+
+# cpboot-daemon for modem
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/ril/sbin/cbd:root/sbin/cbd
 
 # call dalvik heap config
 $(call inherit-product-if-exists, frameworks/native/build/phone-xxhdpi-2048-dalvik-heap.mk)
