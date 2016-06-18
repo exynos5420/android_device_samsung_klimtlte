@@ -161,13 +161,11 @@ BOARD_SEPOLICY_UNION += \
 	drmserver.te \
 	file.te \
 	file_contexts \
-    fsck.te
 	gpsd.te \
 	init.te \
 	macloader.te \
 	mediaserver.te \
     modemloader.te \
-    platform_app.te \
     property.te \
     property_contexts \
     rild.te \
@@ -186,7 +184,7 @@ BOARD_USES_SYNC_MODE_FOR_MEDIA := true
 ENABLE_WEBGL := true
 
 # WFD
-BOARD_USES_WFD_SERVICE := true
+#BOARD_USES_WFD_SERVICE := true
 BOARD_USES_WFD := true
 
 # Wifi
