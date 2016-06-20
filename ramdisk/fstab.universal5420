@@ -15,5 +15,5 @@
 /dev/block/platform/dw_mmc.0/by-name/USERDATA   /data        f2fs      noatime,nosuid,nodev,nodiratime,inline_xattr,inline_data,data_flush       wait,check,encryptable=footer,length=-16384
 
 # VOLD
-/devices/platform/dw_mmc.2/mmc_host/mmc2*               auto            auto    defaults         voldmanaged=sdcard1:auto,encryptable=userdata
+/devices/platform/dw_mmc.2/mmc_host/mmc*               auto            auto    defaults         voldmanaged=sdcard1:auto,encryptable=userdata
 /devices/platform/exynos-dwc3.0/exynos-xhci.0*          auto            auto    defaults         voldmanaged=usbdisk:auto
