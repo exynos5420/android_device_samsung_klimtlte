@@ -289,4 +289,7 @@
       it causes the device to wake up.
       The default is false. -->
     <bool name="config_lidControlsSleep">true</bool>
+
+    <!-- Whether to persist the notification for when a usb drive device is plugged in -->
+    <bool name="config_persistUsbDriveNotification">true</bool>
 </resources>
