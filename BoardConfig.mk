@@ -93,9 +93,6 @@ NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
 # Mixer
 BOARD_USE_BGRA_8888 := true
 
-# Renderscript
-BOARD_OVERRIDE_RS_CPU_VARIANT_32 := cortex-a53
-
 # Exynos display
 BOARD_USES_VIRTUAL_DISPLAY := true
 
