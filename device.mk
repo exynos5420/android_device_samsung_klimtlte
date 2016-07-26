@@ -74,6 +74,9 @@ PRODUCT_PACKAGES += \
     libion \
     gralloc.exynos5
 
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/hal/audio/audio_policy.conf:system/etc/audio_policy.conf
+
 # IR
 PRODUCT_PACKAGES += \
     consumerir.universal5420
