@@ -134,7 +134,6 @@ struct audio_device {
     audio_devices_t out_device;
     audio_devices_t in_device;
     bool mic_mute;
-    bool noise_suppression;
     struct audio_route *ar;
     audio_source_t input_source;
     int cur_route_id;     /* current route ID: combination of input source
@@ -562,9 +561,7 @@ static void adev_set_call_audio_path(struct audio_device *adev)
     }
 
     ALOGV("%s: ril_set_call_audio_path(%d)", __func__, device_type);
-
-    /* TODO: Figure out which devices need EXTRA_VOLUME_PATH set */
-    ril_set_call_audio_path(&adev->ril, device_type, ORIGINAL_PATH);
+    ril_set_call_audio_path(&adev->ril, device_type);
 }
 
 /* Helper functions */
@@ -824,6 +821,12 @@ static int do_out_standby(struct stream_out *out)
 
     ALOGV("%s: output standby: %d", __func__, out->standby);
 
+    /* if in-call, dont turn off PCM */
+    if (adev->in_call) {
+        ALOGV("%s: output standby in-call, exiting...", __func__);
+        return 0;
+    }
+
     if (!out->standby) {
         for (i = 0; i < PCM_TOTAL; i++) {
             if (out->pcm[i]) {
@@ -1077,6 +1080,12 @@ static int do_in_standby(struct stream_in *in)
 {
     struct audio_device *adev = in->dev;
 
+    /* if in-call, dont turn off PCM */
+    if (adev->in_call) {
+        ALOGV("%s: input standby in-call, exiting...", __func__);
+        return 0;
+    }
+
     if (!in->standby) {
         pcm_close(in->pcm);
         in->pcm = NULL;
@@ -1308,8 +1317,7 @@ static int adev_open_output_stream(struct audio_hw_device *dev,
                                    audio_devices_t devices,
                                    audio_output_flags_t flags,
                                    struct audio_config *config,
-                                   struct audio_stream_out **stream_out,
-                                   const char *address __unused)
+                                   struct audio_stream_out **stream_out)
 {
     struct audio_device *adev = (struct audio_device *)dev;
     struct stream_out *out;
@@ -1447,10 +1455,8 @@ static int adev_set_parameters(struct audio_hw_device *dev, const char *kvpairs)
     if (ret >= 0) {
         if (strcmp(value, "true") == 0) {
             ALOGV("%s: enabling two mic control", __func__);
-            adev->noise_suppression = true;
             ril_set_two_mic_control(&adev->ril, AUDIENCE, TWO_MIC_SOLUTION_ON);
         } else {
-            adev->noise_suppression = false;
             ALOGV("%s: disabling two mic control", __func__);
             ril_set_two_mic_control(&adev->ril, AUDIENCE, TWO_MIC_SOLUTION_OFF);
         }
@@ -1463,20 +1469,6 @@ static int adev_set_parameters(struct audio_hw_device *dev, const char *kvpairs)
 static char * adev_get_parameters(const struct audio_hw_device *dev,
                                   const char *keys)
 {
-
-    struct audio_device *adev = (struct audio_device *)dev;
-
-    ALOGV("%s: key: %s", __func__, keys);
-
-    if (strcmp(keys, "noise_suppression") == 0) {
-        if (adev->noise_suppression) {
-            return strdup("noise_suppression=on");
-        } else {
-            return strdup("noise_suppression=off");
-        }
-
-    }
-
     return strdup("");
 }
 
@@ -1491,27 +1483,8 @@ static int adev_set_voice_volume(struct audio_hw_device *dev, float volume)
 
     adev->voice_volume = volume;
 
-    if (adev->mode == AUDIO_MODE_IN_CALL) {
-        enum ril_sound_type sound_type;
-
-        switch (adev->out_device) {
-            case AUDIO_DEVICE_OUT_SPEAKER:
-                sound_type = SOUND_TYPE_SPEAKER;
-                break;
-            case AUDIO_DEVICE_OUT_WIRED_HEADSET:
-            case AUDIO_DEVICE_OUT_WIRED_HEADPHONE:
-                sound_type = SOUND_TYPE_HEADSET;
-                break;
-            case AUDIO_DEVICE_OUT_BLUETOOTH_SCO:
-            case AUDIO_DEVICE_OUT_ALL_SCO:
-                sound_type = SOUND_TYPE_BTVOICE;
-                break;
-            default:
-                sound_type = SOUND_TYPE_VOICE;
-        }
-
-        ril_set_call_volume(&adev->ril, sound_type, volume);
-    }
+    if (adev->mode == AUDIO_MODE_IN_CALL)
+        ril_set_call_volume(&adev->ril, SOUND_TYPE_VOICE, volume);
 
     return 0;
 }
@@ -1597,10 +1570,7 @@ static int adev_open_input_stream(struct audio_hw_device *dev,
                                   audio_io_handle_t handle,
                                   audio_devices_t devices,
                                   struct audio_config *config,
-                                  struct audio_stream_in **stream_in,
-                                  audio_input_flags_t flags __unused,
-                                  const char *address __unused,
-                                  audio_source_t source __unused)
+                                  struct audio_stream_in **stream_in)
 {
     struct audio_device *adev = (struct audio_device *)dev;
     struct stream_in *in;
@@ -1642,7 +1612,6 @@ static int adev_open_input_stream(struct audio_hw_device *dev,
     in->device = devices & ~AUDIO_DEVICE_BIT_IN;
     in->io_handle = handle;
     in->channel_mask = config->channel_mask;
-    /* TODO support low latency pcm config -> AUDIO_INPUT_FLAG_FAST */
 
     in->buffer = malloc(pcm_config_in.period_size * pcm_config_in.channels
                                                * audio_stream_frame_size(&in->stream.common));
