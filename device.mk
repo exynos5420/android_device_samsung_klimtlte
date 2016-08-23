@@ -179,10 +179,6 @@ PRODUCT_PACKAGES += \
     init.baseband.rc \
     ueventd.universal5420.rc
 
-# Charger
-PRODUCT_PACKAGES += \
-    charger_res_images
-
 # Radio (needed for audio controls even on wifi-only)
 PRODUCT_PACKAGES += \
     libsecril-client \
