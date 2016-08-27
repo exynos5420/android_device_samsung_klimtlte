@@ -138,10 +138,6 @@ WITH_DEXPREOPT_BOOT_IMG_ONLY ?= false
 WITH_DEXPREOPT := false
 DONT_DEXPREOPT_PREBUILTS := true
 
-# If using cm vold we support exfat and ntfs
-TARGET_KERNEL_HAVE_EXFAT := true
-TARGET_KERNEL_HAVE_NTFS := true
-
 # Disable journaling on system.img to save space
 BOARD_SYSTEMIMAGE_JOURNAL_SIZE := 0
 
