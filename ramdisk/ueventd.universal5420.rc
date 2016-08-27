@@ -80,6 +80,7 @@
 #RIL
 /dev/block/mmcblk0p13     0660   system     radio
 /dev/umts*                0660   system     radio
+/dev/umts_csd             0660   system     loop_radio
 
 # MDM 9x25
 /dev/block/mmcblk0p4      0660   system     radio
