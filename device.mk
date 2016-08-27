@@ -177,6 +177,7 @@ PRODUCT_PACKAGES += \
     libsecril-client-sap \
     libril \
     librilutils \
+    libxml2 \
     rild 
 
 # Recovery
