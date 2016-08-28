@@ -158,8 +158,10 @@ BOARD_USES_SCALER := true
 BOARD_USES_GSC_VIDEO := true
 
 # SELinux
-BOARD_SEPOLICY_DIRS += \
-    device/samsung/klimtlte/sepolicy
+BOARD_SEPOLICY_DIRS += $(LOCAL_PATH)/sepolicy
+
+# Seccomp filters
+BOARD_SECCOMP_POLICY += $(LOCAL_PATH)/seccomp
 
 # Webkit
 ENABLE_WEBGL := true
