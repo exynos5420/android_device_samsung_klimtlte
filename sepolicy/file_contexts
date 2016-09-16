@@ -41,6 +41,8 @@
 /sys/devices/15510000.usb/ehci_power        u:object_r:sysfs_usb_power_writable:s0
 /sys/devices/10f24000.mipi-lli/lli_control  u:object_r:sysfs_mipi_writable:s0
 
+/sys/class/mdnie/mdnie/scenario        u:object_r:sysfs_mdnie_writable:s0
+
 /sys/devices/virtual/misc/multipdp(/.*)     u:object_r:sysfs_multipdp_writable:s0
 
 /data/\.gps\.interface\.pipe\.to_gpsd	u:object_r:gps_data_file:s0
@@ -51,6 +53,8 @@
 
 /data/.wifiver.info     u:object_r:wifi_data_file:s0
 /efs/wifi(/.*)?         u:object_r:wifi_efs_file:s0
+
+/data/misc/radio(/.*)?       u:object_r:radio_data_file:s0
 
 /sbin/cbd                       u:object_r:cpboot-daemon_exec:s0
 /system/bin/mcDriverDaemon      u:object_r:tee_exec:s0

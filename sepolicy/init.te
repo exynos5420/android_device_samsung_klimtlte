@@ -1,8 +1,14 @@
-allow init drmserver_service:service_manager add;
+domain_trans(init, rootfs, cpboot-daemon)
+domain_trans(init, cpboot-daemon_exec, cpboot-daemon)
 domain_trans(init, gpsd_exec, gpsd)
 domain_trans(init, macloader_exec, macloader)
 domain_trans(init, modemloader_exec, modemloader)
 domain_trans(init, tee_exec, tee)
+
+allow init drmserver_service:service_manager add;
+
+# read/chown mDNIE symlinks
+allow init sysfs_mdnie_writable:lnk_file { read setattr };
 
 # /dev/block/mmcblk0p[0-9]
 allow init emmcblk_device:blk_file rw_file_perms;

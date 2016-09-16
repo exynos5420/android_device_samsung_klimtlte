@@ -14,3 +14,8 @@ allow system_server wifi_efs_file:file r_file_perms;
 type_transition system_server system_data_file:fifo_file gps_data_file ".gps.interface.pipe.to_jni";
 allow system_server gps_data_file:fifo_file create_file_perms;
 allow system_server gps_data_file:dir rw_dir_perms;
+
+# mDNIE
+allow system_server sysfs_mdnie_writable:lnk_file rw_file_perms;
+allow system_server sysfs_mdnie_writable:dir rw_dir_perms;
+allow system_server sysfs_mdnie_writable:file rw_file_perms;
