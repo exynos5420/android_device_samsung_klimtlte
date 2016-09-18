@@ -167,7 +167,7 @@
     <string-array translatable="false" name="config_tether_bluetooth_regexs">
         <item>"bt-pan"</item>
     </string-array>
-    
+
     <!-- Boolean indicating if restoring network selection should be skipped -->
     <!-- The restoring is handled by modem if it is true -->
     <bool translatable="false" name="skip_restoring_network_selection">true</bool>
@@ -273,7 +273,11 @@
          config to 7. -->
     <integer name="config_deviceHardwareWakeKeys">65</integer>
 
+     <!-- Allow screen mirroring/miracast -->
     <bool name="config_enableWifiDisplay">true</bool>
+
+    <!-- Our gralloc has support for protected buffers -->
+    <bool name="config_wifiDisplaySupportsProtectedBuffers">true</bool>
 
     <!-- Enable translucent UI -->
     <bool name="config_enableLockScreenTranslucentDecor">true</bool>
