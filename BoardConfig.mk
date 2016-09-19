@@ -113,6 +113,10 @@ BOARD_HARDWARE_CLASS += hardware/samsung/cmhw
 # Keymaster
 BOARD_USES_TRUST_KEYMASTER := true
 
+# Extended filesystem support
+TARGET_KERNEL_HAVE_EXFAT := true
+TARGET_KERNEL_HAVE_NTFS := true
+
 # Media
 COMMON_GLOBAL_CFLAGS += -DUSE_NATIVE_SEC_NV12TILED # use format from fw/native
 
@@ -164,6 +168,9 @@ BOARD_USES_GSC_VIDEO := true
 # SELinux
 BOARD_SEPOLICY_DIRS += \
     device/samsung/klimtlte/sepolicy
+
+# SurfaceFlinger
+BOARD_USES_SYNC_MODE_FOR_MEDIA := true
 
 # Webkit
 ENABLE_WEBGL := true
