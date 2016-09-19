@@ -184,7 +184,7 @@ PRODUCT_PACKAGES += \
     libsecril-client-sap \
     libril \
     librilutils \
-    rild 
+    rild
 
 # Recovery
 PRODUCT_PACKAGES += \
@@ -214,6 +214,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PACKAGES += \
     libnetcmdiface \
     macloader \
+    wifiloader \
     modemloader
 
 # CPU producer to CPU consumer not supported
