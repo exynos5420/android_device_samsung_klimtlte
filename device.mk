@@ -53,6 +53,7 @@ PRODUCT_PACKAGES += \
 # Camera
 PRODUCT_PACKAGES += \
     camera.universal5420 \
+    snap \
     libhwjpeg
 
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -71,6 +72,7 @@ PRODUCT_PACKAGES += \
 # HW composer
 PRODUCT_PACKAGES += \
     libion \
+    libfimg \
     gralloc.exynos5
 
 PRODUCT_COPY_FILES += \
@@ -104,6 +106,10 @@ PRODUCT_PACKAGES += \
 # add it back
 PRODUCT_PACKAGES += \
     libstlport
+
+# Snap camera. Disabe QCOM-related features
+PRODUCT_PROPERTY_OVERRIDES += \
+    camera.qcom.misc.disable=1
 
 # Lights
 PRODUCT_PACKAGES += \
