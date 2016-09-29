@@ -15,3 +15,5 @@
 
     <!-- Disable livedisplay by default -->
     <integer name="config_defaultLiveDisplayMode">0</integer>
+
+</resources>
