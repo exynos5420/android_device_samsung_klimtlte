@@ -191,7 +191,9 @@ PRODUCT_PACKAGES += \
     libsecril-client-sap \
     libril \
     librilutils \
-    rild 
+    rild \
+    libxml2 \
+    libprotobuf-cpp-full
 
 # Recovery
 PRODUCT_PACKAGES += \
