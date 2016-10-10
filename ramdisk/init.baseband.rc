@@ -21,11 +21,13 @@ on fs
 service modemloader /system/bin/modemloader
     class core
     oneshot
+    seclabel u:r:modemloader:s0
 
 service cpboot-daemon /sbin/cbd -d -txmm7160 -bh -mh -p 13
     class main
     user root
     group radio cache inet misc audio sdcard_rw log sdcard_r shell
+    seclabel u:r:cpboot-daemon:s0
 
 service_redefine ril-daemon /system/bin/rild
     class main
