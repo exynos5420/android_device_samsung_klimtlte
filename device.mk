@@ -252,6 +252,3 @@ $(call inherit-product, hardware/samsung_slsi-cm/exynos5420/exynos5420.mk)
 
 # call the proprietary setup
 $(call inherit-product-if-exists, vendor/samsung/klimtlte/klimtlte-vendor.mk)
-
-# call the proprietary setup
-$(call inherit-product-if-exists, vendor/samsung/tabs-common/tabs-common-vendor.mk)
