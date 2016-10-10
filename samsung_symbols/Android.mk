@@ -18,8 +18,7 @@ include $(CLEAR_VARS)
 
 LOCAL_SRC_FILES := \
     Fence.cpp \
-    GraphicBufferMapper.cpp \
-    samsung_ril.cpp
+    GraphicBufferMapper.cpp
 
 LOCAL_SHARED_LIBRARIES := libbinder libui
 
