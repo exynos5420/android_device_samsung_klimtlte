@@ -9,7 +9,7 @@ ro.hdcp2.rx=tz
 # UI
 lockscreen.rot_override=true
 ro.sf.lcd_density=320
-ro.opengles.version=196608
+ro.opengles.version=196609
 
 ro.hwui.texture_cache_size=96
 ro.hwui.layer_cache_size=64
