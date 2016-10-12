@@ -2,11 +2,7 @@ on init
     mkdir /efs 0771 radio system
     symlink /dev/block/mmcblk0p13 /dev/mbin0
     restorecon /dev/mbin0
-    symlink  /sys/devices/platform/s5p-ehci/ehci_power /dev/ehci_power
-
-    write /sys/module/modem_link_pm_xmm626x/parameters/l2_delay 500
-    write /sys/module/modem_link_pm_xmm626x/parameters/hub_delay 500
-    write /sys/module/modem_link_device_hsic_4ncm/parameters/tx_qlen 50
+    symlink /sys/devices/platform/s5p-ehci/ehci_power /dev/ehci_power
 
 on fs
     chown radio system /efs
@@ -37,6 +33,6 @@ service_redefine ril-daemon /system/bin/rild
 
 # Modem Logging daemon
 #service ML-daemon /system/bin/mlexe
-    #class main
-    #user root
-    #group system radio inet net_raw
+#    class main
+#    user root
+#    group system radio inet net_raw

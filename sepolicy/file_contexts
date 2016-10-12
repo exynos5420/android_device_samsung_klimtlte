@@ -69,6 +69,7 @@
 /system/bin/macloader							u:object_r:macloader_exec:s0
 /system/bin/modemloader							u:object_r:modemloader_exec:s0
 /system/bin/gpsd							u:object_r:gpsd_exec:s0
+/system/bin/wifiloader							u:object_r:wifiloader_exec:s0
 
 /sys/devices/platform/bcm4339_bluetooth/rfkill/rfkill0/state		u:object_r:sysfs_bluetooth_writable:s0
 /sys/devices/platform/bcm4339_bluetooth/rfkill/rfkill0/type		u:object_r:sysfs_bluetooth_writable:s0
