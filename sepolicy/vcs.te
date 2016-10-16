@@ -19,5 +19,7 @@ allow vcs tee_device:chr_file rw_file_perms;
 
 allow vcs tee:unix_stream_socket connectto;
 
+allow vcs vcs_log_file:dir { create add_name };
+
 # /dev/s5p-smem
 allow vcs secmem_device:chr_file { read write ioctl open };
