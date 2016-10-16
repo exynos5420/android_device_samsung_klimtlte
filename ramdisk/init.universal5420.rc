@@ -115,6 +115,8 @@ on boot
     write /sys/class/sec/sec_key/wakeup_keys 116,172
 
 # Permissions for PowerHAL
+    chown system system /sys/class/input/input11/enabled
+    chmod 0660 /sys/class/input/input11/enabled
     chown system system /sys/class/input/input10/enabled
     chmod 0660 /sys/class/input/input10/enabled
     chown system system /sys/class/input/input9/enabled
