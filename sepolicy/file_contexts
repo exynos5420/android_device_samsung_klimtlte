@@ -38,7 +38,7 @@
 
 /efs/FactoryApp(/.*)?							u:object_r:app_efs_file:s0
 /efs/imei(/.*)?								u:object_r:imei_efs_file:s0
-/efs/nv_data.bin(.*)							u:object_r:bin_nv_data_efs_file:s0
+/efs/nv_data.bin							u:object_r:bin_nv_data_efs_file:s0
 
 /dev/umts.*								u:object_r:mif_device:s0
 /dev/ehci_power								u:object_r:mif_device:s0
@@ -61,6 +61,8 @@
 
 /data/.wifiver.info							u:object_r:wifi_data_file:s0
 /efs/wifi(/.*)?								u:object_r:wifi_efs_file:s0
+
+/data/camera(/.*)?							u:object_r:camera_data_file:s0
 
 /data/misc/radio(/.*)?							u:object_r:radio_data_file:s0
 
