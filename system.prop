@@ -23,6 +23,7 @@ ro.hwui.text_small_cache_height=2048
 ro.hwui.text_large_cache_width=4096
 ro.hwui.text_large_cache_height=4096
 ro.hwui.fbo_cache_size=16
+dalvik.vm.extra-opts=-XX:+DisableExplicitGC
 
 # Radio
 rild.libpath=/system/lib/libsec-ril.so
