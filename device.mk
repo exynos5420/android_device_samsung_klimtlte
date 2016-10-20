@@ -51,6 +51,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     camera2.portability.force_api=1
 
+# Remove packages that do not work well
+PRODUCT_PACKAGES += \
+    RemovePackages
+
 # Filesystem management tools
 PRODUCT_PACKAGES += \
     make_ext4fs \
