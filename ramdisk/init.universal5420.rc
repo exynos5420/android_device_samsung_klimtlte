@@ -36,18 +36,27 @@ on property:sys.boot_completed=1
     write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor interactive
     write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor interactive
     write /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor interactive
-    write /sys/devices/system/cpu/cpufreq/interactive/above_hispeed_delay "20000 1000000:40000 1500000:20000"
-    write /sys/devices/system/cpu/cpufreq/interactive/check_fast_target_loads "50 1000000:66"
-    write /sys/devices/system/cpu/cpufreq/interactive/go_hispeed_load 9999999
+    write /sys/devices/system/cpu/cpufreq/interactive/above_hispeed_delay "20000 1000000:80000 1200000:100000 1700000:20000"
+    write /sys/devices/system/cpu/cpufreq/interactive/boost 0
+    write /sys/devices/system/cpu/cpufreq/interactive/boostpulse_duration 40000
+    write /sys/devices/system/cpu/cpufreq/interactive/enforced_mode 0
+    write /sys/devices/system/cpu/cpufreq/interactive/go_hispeed_load 99
+    write /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq 600000
     write /sys/devices/system/cpu/cpufreq/interactive/io_is_busy 0
     write /sys/devices/system/cpu/cpufreq/interactive/min_sample_time 40000
-    write /sys/devices/system/cpu/cpufreq/interactive/sampling_down_factor 100000
-    write /sys/devices/system/cpu/cpufreq/interactive/target_loads 85
-
-    # Configure the cpu-boost module
-    #write /sys/module/cpu_boost/parameters/boost_ms 10
-    #write /sys/module/cpu_boost/parameters/input_boost_freq 1200000
-    #write /sys/module/cpu_boost/parameters/input_boost_ms 40
+    write /sys/devices/system/cpu/cpufreq/interactive/mode 0
+    write /sys/devices/system/cpu/cpufreq/interactive/multi_enter_load 360
+    write /sys/devices/system/cpu/cpufreq/interactive/multi_enter_time 80000
+    write /sys/devices/system/cpu/cpufreq/interactive/multi_exit_load 360
+    write /sys/devices/system/cpu/cpufreq/interactive/multi_exit_time 320000
+    write /sys/devices/system/cpu/cpufreq/interactive/param_index 0
+    write /sys/devices/system/cpu/cpufreq/interactive/single_enter_load 90
+    write /sys/devices/system/cpu/cpufreq/interactive/single_enter_time 160000
+    write /sys/devices/system/cpu/cpufreq/interactive/single_exit_load 90
+    write /sys/devices/system/cpu/cpufreq/interactive/single_exit_time 80000
+    write /sys/devices/system/cpu/cpufreq/interactive/target_loads "70 600000:70 800000:75 1500000:80 1700000:90"
+    write /sys/devices/system/cpu/cpufreq/interactive/timer_rate 20000
+    write /sys/devices/system/cpu/cpufreq/interactive/timer_slack 20000
 
 on post-fs-data
     # we will remap this as /mnt/sdcard with the sdcard fuse tool
