@@ -160,8 +160,14 @@ BOARD_RECOVERY_SWIPE := true
 # Samsung Gralloc
 TARGET_SAMSUNG_GRALLOC_EXTERNAL_USECASES := true
 
+# gscaler
+BOARD_USES_ONLY_GSC0_GSC1 := true
+
 # Scaler
 BOARD_USES_SCALER := true
+BOARD_USES_CEC := true
+
+# HDMI
 BOARD_USES_GSC_VIDEO := true
 
 # SELinux
