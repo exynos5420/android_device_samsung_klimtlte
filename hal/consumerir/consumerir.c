@@ -101,16 +101,11 @@ static int consumerir_transmit(UNUSED struct consumerir_device *dev,
     if (!append_number(&buffer, &buffer_len, &buffer_size, carrier_freq))
         goto error;
 
-    /* calculate factor of conversion from microseconds to pulses */
-    float factor = 1000000 / carrier_freq;
-
     /* write out the timing pattern */
     for (i = 0; i < pattern_len; i++)
     {
-        if (!append_number(&buffer, &buffer_len, &buffer_size,
-                (int) (pattern[i] / factor))) {
+        if (!append_number(&buffer, &buffer_len, &buffer_size, pattern[i]))
             goto error;
-        }
     }
 
     buffer[buffer_len - 1] = 0;
