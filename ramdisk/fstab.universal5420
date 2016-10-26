@@ -16,4 +16,4 @@
 
 # VOLD
 /devices/platform/dw_mmc.2/mmc_host/mmc*               auto            auto    defaults         voldmanaged=sdcard1:auto,encryptable=userdata
-/devices/platform/exynos-dwc3.0/exynos-xhci.0*          auto            auto    defaults         voldmanaged=usbdisk:auto
+/devices/platform/exynos-dwc3.0/exynos-xhci.0/usb*          auto            auto    defaults         voldmanaged=usbdisk:auto
