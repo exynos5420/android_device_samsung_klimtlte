@@ -1,0 +1,75 @@
+import init.baseband.rc
+
+on post-fs-data
+# Open permissions for touchkey_enable so KeyDisabler can write to it
+    chown system root /sys/devices/virtual/sec/sec_touchkey/touchkey_enabled
+
+on boot
+# Headphones (Headset)
+    chown system system /sys/class/input/input12/enabled
+    chmod 0660 /sys/class/input/input12/enabled
+
+# Physical Home Button (gpio-keys)
+    chown system radio /sys/class/input/input11/enabled
+    chmod 0660 /sys/class/input/input11/enabled
+
+# Capacitive Buttons (sec_touchkey)
+    chown system radio /sys/class/input/input10/enabled
+    chmod 0660 /sys/class/input/input10/enabled
+
+# Grip Sensor
+    chown system system /sys/class/input/input9/enabled
+    chmod 0660 /sys/class/input/input9/enabled
+
+# Proximity Sensor
+    chown system system /sys/class/input/input8/enabled
+    chmod 0660 /sys/class/input/input8/enabled
+
+# Light Sensor
+    chown system system /sys/class/input/input7/enabled
+    chmod 0660 /sys/class/input/input7/enabled
+
+# Magnetic Sensor
+    chown system system /sys/class/input/input6/enabled
+    chmod 0660 /sys/class/input/input6/enabled
+
+# Gyro Sensor
+    chown system system /sys/class/input/input5/enabled
+    chmod 0660 /sys/class/input/input5/enabled
+
+# Accelerometer sensor
+    chown system system /sys/class/input/input4/enabled
+    chmod 0660 /sys/class/input/input4/enabled
+
+# MHL (sii8240_rcp)
+    chown system system /sys/class/input/input3/enabled
+    chmod 0660 /sys/class/input/input3/enabled
+
+# Touchscreen (sec_touchscreen)
+    chown system system /sys/class/input/input2/enabled
+    chmod 0660 /sys/class/input/input2/enabled
+
+# Micro-USB IC (max77803-muic)
+    chown system system /sys/class/input/input0/enabled
+    chmod 0660 /sys/class/input/input0/enabled
+
+# Magnetic_sensor
+    chown system radio /dev/akm8963
+
+# Grip_sensor
+    chown system radio /sys/class/sensors/grip_sensor/vendor
+    chown system radio /sys/class/sensors/grip_sensor/name
+    chown system radio /sys/class/sensors/grip_sensor/raw_data
+    chown system radio /sys/class/sensors/grip_sensor/calibration
+    chown system radio /sys/class/sensors/grip_sensor/threshold
+    chown system radio /sys/class/sensors/grip_sensor/onoff
+
+on fs
+# Fingerprint
+    mkdir /dev/validity 0770 system system
+
+# SENSOR FRAMEWORK : starts fingerprintService
+service vcsFPService /system/bin/vcsFPService
+    class late_start
+    user system
+    group system
