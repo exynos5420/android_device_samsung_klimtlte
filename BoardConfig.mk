@@ -43,10 +43,6 @@ BOARD_RIL_CLASS := ../../../$(LOCAL_PATH)/ril
 BOARD_MODEM_NEEDS_VIDEO_CALL_FIELD := true
 
 # Bluetooth
-BOARD_HAVE_BLUETOOTH := true
-BOARD_HAVE_BLUETOOTH_BCM := true
-BOARD_HAVE_SAMSUNG_BLUETOOTH := true
-BOARD_BLUEDROID_VENDOR_CONF := $(LOCAL_PATH)/bluetooth/libbt_vndcfg.txt
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(LOCAL_PATH)/bluetooth
 
 # Bootloader
@@ -190,6 +186,8 @@ WIFI_DRIVER_FW_PATH_STA          := "/system/etc/wifi/bcmdhd_sta.bin"
 WIFI_DRIVER_FW_PATH_AP           := "/system/etc/wifi/bcmdhd_apsta.bin"
 WIFI_DRIVER_NVRAM_PATH_PARAM     := "/sys/module/dhd/parameters/nvram_path"
 WIFI_DRIVER_NVRAM_PATH           := "/system/etc/wifi/nvram_net.txt"
+
+include device/samsung/exynos5420-common/BoardConfigCommon.mk
 
 # inherit from the proprietary version
 -include vendor/samsung/klimtlte/BoardConfigVendor.mk
