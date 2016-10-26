@@ -46,18 +46,6 @@ TARGET_SCREEN_WIDTH := 1600
 PRODUCT_PACKAGES += \
     libsamsung_symbols
 
-# boringssl-compat
-PRODUCT_PACKAGES += \
-    libboringssl-compat
-
-# Camera
-PRODUCT_PACKAGES += \
-    camera.universal5420 \
-    libhwjpeg
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    camera2.portability.force_api=1
-
 # Filesystem management tools
 PRODUCT_PACKAGES += \
     make_ext4fs \
@@ -81,10 +69,6 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/hal/audio/audio_policy.conf:system/etc/audio_policy.conf
-
-# IR
-PRODUCT_PACKAGES += \
-    consumerir.universal5420
 
 # Keylayouts
 PRODUCT_COPY_FILES += \
@@ -241,6 +225,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # call dalvik heap config
 $(call inherit-product-if-exists, frameworks/native/build/phone-xxhdpi-2048-dalvik-heap.mk)
+
+# Import the common tree changes
+include device/samsung/exynos5420-common/exynos5420.mk
 
 # call Samsung LSI board support package
 $(call inherit-product, hardware/samsung_slsi-cm/exynos5/exynos5.mk)
