@@ -18,14 +18,13 @@ on init
 
 on post-fs
     # Support legacy paths
-    symlink /sdcard /mnt/sdcard
     symlink /sdcard /storage/sdcard0
     symlink /sdcard1 /storage/sdcard1
-    symlink /sdcard1 /mnt/extSdCard
     symlink /sdcard1 /external_sd
-    symlink /storage/usbdisk /mnt/usbdisk
 
 on early-init
+    mount debugfs /sys/kernel/debug /sys/kernel/debug mode=755
+
     write /sys/block/mmcblk0/queue/read_ahead_kb 512
     write /sys/block/mmcblk1/queue/read_ahead_kb 512
     write /sys/block/mmcblk0/queue/scheduler noop
@@ -80,17 +79,6 @@ on post-fs-data
 
     #Create directory for hostapd
     mkdir /data/hostapd 0770 system wifi
-
-# Bluetooth dhcpcd config
-service dhcpcd_bt-pan /system/bin/dhcpcd -ABKL
-    class main
-	disabled
-	oneshot
-
-service iprenew_bt-pan /system/bin/dhcpcd -n
-    class late_start
-	disabled
-	oneshot
 
 on boot
 
@@ -464,17 +452,6 @@ service bttestdaemon /system/bin/bttestd
     disabled
     oneshot
 
-# for ethernet
-service dhcpcd_eth0 /system/bin/dhcpcd -aABDKL
-    class late_start
-    disabled
-    oneshot
-
-service iprenew_eth0 /system/bin/dhcpcd -n
-    class late_start
-    disabled
-    oneshot
-
 # Kick watchdogd if debug_level is low
 on property:ro.debug_level=0x4f4c
 	start watchdogd
@@ -495,7 +472,7 @@ on property:ro.SecEDS.enable=false
 service gpsd /system/bin/gpsd -c /system/etc/gps.xml
     class main
     user gps
-    group system inet net_raw
+    group system wakelock inet net_raw
     ioprio be 0
 
 # MobiCore startup
