@@ -50,6 +50,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libboringssl-compat
 
+PRODUCT_PACKAGES += \
+    libchrome
+
 # Camera
 PRODUCT_PACKAGES += \
     camera.universal5420 \
