@@ -28,6 +28,4 @@ LOCAL_PROGUARD_FLAG_FILES := proguard.flags
 LOCAL_CERTIFICATE := platform
 LOCAL_PRIVILEGED_MODULE := true
 
-LOCAL_JACK_ENABLED := disabled
-
 include $(BUILD_PACKAGE)
