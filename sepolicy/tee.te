@@ -1,6 +1,3 @@
-# mobicore
-
-# Allow to create files and directories /data/app/mcRegistry
-file_type_auto_trans(tee, apk_data_file, tee_data_file);
+# Fingerprint
 allow tee vcs_data_file:dir create_dir_perms;
 allow tee vcs_data_file:file create_file_perms;
