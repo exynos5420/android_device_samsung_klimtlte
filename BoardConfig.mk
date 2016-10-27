@@ -108,6 +108,10 @@ BOARD_HARDWARE_CLASS += device/samsung/klimtlte/cmhw
 # Keymaster
 BOARD_USES_TRUST_KEYMASTER := true
 
+# Extended filesystem support
+TARGET_KERNEL_HAVE_EXFAT := true
+TARGET_KERNEL_HAVE_NTFS := true
+
 # Media
 COMMON_GLOBAL_CFLAGS += -DUSE_NATIVE_SEC_NV12TILED # use format from fw/native
 COMMON_GLOBAL_CFLAGS += -DWIDEVINE_PLUGIN_PRE_NOTIFY_ERROR
