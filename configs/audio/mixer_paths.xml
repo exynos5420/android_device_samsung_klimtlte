@@ -220,7 +220,7 @@
 
     <ctl name="SPK Switch" value="1" />
 
-    <ctl name="Speaker Digital Volume" value="122" />
+    <ctl name="Speaker Digital Volume" value="125" />
     <ctl name="SPKOUTL Input 1 Volume" value="31" />
     <ctl name="SPKOUTR Input 1 Volume" value="30" />
   </path>
