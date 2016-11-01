@@ -367,6 +367,16 @@ on boot
     chown radio system /sys/class/secgpio_check/secgpio_check_all/gpiosleep_check
     chown radio system /sys/class/secgpio_check/secgpio_check_all/checked_sleepGPIO
 
+# Wolfson DAC Settings
+    echo -8 > /sys/class/misc/wolfson_control/eq_sp_gain_1 # Low Band
+    echo -4 > /sys/class/misc/wolfson_control/eq_sp_gain_2 # Low-Mid Band
+    echo 1 > /sys/class/misc/wolfson_control/eq_sp_gain_3 # Mid Band
+    echo 2 > /sys/class/misc/wolfson_control/eq_sp_gain_4 # Mid-High Band
+    echo 3 > /sys/class/misc/wolfson_control/eq_sp_gain_5 # High Band
+    echo 6 > /sys/class/misc/wolfson_control/speaker_gain_left # Set Left Speaker Gain
+    echo 6 > /sys/class/misc/wolfson_control/speaker_gain_right # Set Right Speaker Gain
+    echo 1 > /sys/class/misc/wolfson_control/switch_eq_speaker # Toggle EQ
+
 on fs
     mount_all /fstab.universal5420
 
