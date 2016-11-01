@@ -367,6 +367,16 @@ on boot
     chown radio system /sys/class/secgpio_check/secgpio_check_all/gpiosleep_check
     chown radio system /sys/class/secgpio_check/secgpio_check_all/checked_sleepGPIO
 
+# Wolfson DAC Settings
+    echo -8 > /sys/class/misc/wolfson_control/eq_sp_gain_1
+    echo -4 > /sys/class/misc/wolfson_control/eq_sp_gain_2
+    echo 1 > /sys/class/misc/wolfson_control/eq_sp_gain_3
+    echo 2 > /sys/class/misc/wolfson_control/eq_sp_gain_4
+    echo 3 > /sys/class/misc/wolfson_control/eq_sp_gain_5
+    echo 6 > /sys/class/misc/wolfson_control/speaker_gain_left
+    echo 6 > /sys/class/misc/wolfson_control/speaker_gain_right
+    echo 1 > /sys/class/misc/wolfson_control/switch_eq_speaker
+
 on fs
     mount_all /fstab.universal5420
 
