@@ -442,6 +442,18 @@ on fs
     rm /data/smd_started
     rm /data/sv_cno.info
 
++# Vibrator
+    chmod 0644 /sys/class/timed_output/vibrator/pwm_value
+    chown system system /sys/class/timed_output/vibrator/pwm_value
+    chmod 0644 /sys/class/timed_output/vibrator/pwm_max
+    chown system system /sys/class/timed_output/vibrator/pwm_max
+    chmod 0644 /sys/class/timed_output/vibrator/pwm_min
+    chown system system /sys/class/timed_output/vibrator/pwm_min
+    chmod 0644 /sys/class/timed_output/vibrator/pwm_default
+    chown system system /sys/class/timed_output/vibrator/pwm_default
+    chmod 0644 /sys/class/timed_output/vibrator/pwm_threshold
+    chown system system /sys/class/timed_output/vibrator/pwm_threshold
+
 # Fingerprint
     mkdir /dev/validity 0770 system system
 
