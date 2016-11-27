@@ -5,6 +5,14 @@ on post-fs-data
     chown system root /sys/devices/virtual/sec/sec_touchkey/touchkey_enabled
 
 on boot
+
+# Fingerprint
+    mkdir /dev/validity 0770 system system
+    mkdir /data/validity 0770 system system
+
+# Fingerprint Sensor
+    chown system radio /sys/class/fingerprint/fingerprint/type_check
+
 # Headphones (Headset)
     chown system system /sys/class/input/input12/enabled
     chmod 0660 /sys/class/input/input12/enabled
@@ -64,9 +72,10 @@ on boot
     chown system radio /sys/class/sensors/grip_sensor/threshold
     chown system radio /sys/class/sensors/grip_sensor/onoff
 
-on fs
-# Fingerprint
-    mkdir /dev/validity 0770 system system
+service fingerprintd /system/bin/fingerprintd
+    class late_start
+    user system
+    group input
 
 # SENSOR FRAMEWORK : starts fingerprintService
 service vcsFPService /system/bin/vcsFPService
