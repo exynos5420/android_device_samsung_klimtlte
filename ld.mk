@@ -6,12 +6,9 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/telephony.mk)
 $(call inherit-product, device/samsung/klimtlte/device.mk)
 
 # Inherit some common CM stuff.
-$(call inherit-product, vendor/cm/config/common_full_tablet_wifionly.mk)
+$(call inherit-product, vendor/ld/config/common_full_phone.mk)
 
-# Inherit more cyanogenmod stuff.
-$(call inherit-product, vendor/cm/config/telephony.mk)
-
-PRODUCT_NAME := cm_klimtlte
+PRODUCT_NAME := ld_klimtlte
 PRODUCT_DEVICE := klimtlte
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
