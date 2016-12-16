@@ -20,6 +20,7 @@ import static com.android.internal.telephony.RILConstants.*;
 
 import android.content.Context;
 import android.telephony.Rlog;
+import android.os.AsyncResult;
 import android.os.Message;
 import android.os.Parcel;
 import android.telephony.PhoneNumberUtils;
@@ -28,6 +29,8 @@ import android.telephony.SmsManager;
 import com.android.internal.telephony.uicc.IccCardApplicationStatus;
 import com.android.internal.telephony.uicc.IccCardStatus;
 import com.android.internal.telephony.uicc.IccRefreshResponse;
+import com.android.internal.telephony.uicc.IccUtils;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -42,7 +45,7 @@ public class SlteRIL extends RIL {
      * SAMSUNG REQUESTS
      **********************************************************/
     static final boolean RILJ_LOGD = true;
-    static final boolean RILJ_LOGV = false;
+    static final boolean RILJ_LOGV = true;
 
     private static final int RIL_UNSOL_DEVICE_READY_NOTI = 11008;
     private static final int RIL_UNSOL_AM = 11010;
@@ -71,11 +74,10 @@ public class SlteRIL extends RIL {
         RILRequest rr =
             RILRequest.obtain(RIL_REQUEST_ANSWER, result);
 
-        if (RILJ_LOGD) {
-            riljLog(rr.serialString() + "> " + requestToString(rr.mRequest));
-        }
+        if (RILJ_LOGD) riljLog(rr.serialString() + "> " + requestToString(rr.mRequest));
+
         rr.mParcel.writeInt(1);
-        rr.mParcel.writeInt(index);
+        rr.mParcel.writeInt(0);
 
         send(rr);
     }
@@ -129,6 +131,31 @@ public class SlteRIL extends RIL {
 
     @Override
     public void
+    getIccCardStatus(Message result) {
+        if (mState != RadioState.RADIO_ON) {
+            mPendingGetSimStatus = result;
+        } else {
+          //Note: This RIL request has not been renamed to ICC,
+          //       but this request is also valid for SIM and RUIM
+          RILRequest rr = RILRequest.obtain(RIL_REQUEST_GET_SIM_STATUS, result);
+
+          if (RILJ_LOGD) riljLog(rr.serialString() + "> " + requestToString(rr.mRequest));
+
+          send(rr);
+        }
+    }
+
+    public void setDataAllowed(boolean allowed, Message result) {
+        Rlog.v(RILJ_LOG_TAG, "XMM7260RIL: setDataAllowed");
+
+        if (result != null) {
+            AsyncResult.forMessage(result, 0, null);
+            result.sendToTarget();
+        }
+    }
+
+    @Override
+    public void
     dial(String address, int clirMode, UUSInfo uusInfo, Message result) {
         if (PhoneNumberUtils.isEmergencyNumber(address)) {
             dialEmergencyCall(address, clirMode, result);
@@ -162,7 +189,7 @@ public class SlteRIL extends RIL {
         RILRequest rr;
 
         rr = RILRequest.obtain(RIL_REQUEST_DIAL_EMERGENCY_CALL, result);
-        rr.mParcel.writeString(address);
+        rr.mParcel.writeString(address + "/");
         rr.mParcel.writeInt(clirMode);
         rr.mParcel.writeInt(0);        // CallDetails.call_type
         rr.mParcel.writeInt(3);        // CallDetails.call_domain
@@ -172,6 +199,16 @@ public class SlteRIL extends RIL {
         if (RILJ_LOGD) riljLog(rr.serialString() + "> " + requestToString(rr.mRequest));
 
         send(rr);
+    }
+
+    @Override
+    private void switchToRadioState(RadioState newState) {
+        setRadioState(newState);
+
+        if (newState == RadioState.RADIO_ON && mPendingGetSimStatus != null) {
+            getIccCardStatus(mPendingGetSimStatus);
+            mPendingGetSimStatus = null;
+        }
     }
 
     @Override
@@ -219,6 +256,7 @@ public class SlteRIL extends RIL {
     protected Object
     responseCallList(Parcel p) {
         int num;
+        int voiceSettings;
         ArrayList<DriverCall> response;
         DriverCall dc;
 
@@ -239,19 +277,21 @@ public class SlteRIL extends RIL {
             dc.isMpty = (0 != p.readInt());
             dc.isMT = (0 != p.readInt());
             dc.als = p.readInt();
-            dc.isVoice = (0 != p.readInt());
+            voiceSettings = p.readInt();
+            dc.isVoice = (0 == voiceSettings) ? false : true;
 
             boolean isVideo = (0 != p.readInt());   // Samsung
             int call_type = p.readInt();            // Samsung CallDetails
             int call_domain = p.readInt();          // Samsung CallDetails
-            String csv = p.readString();            // Samsung CallDetails
+            //String csv = p.readString();            // Samsung CallDetails
 
             dc.isVoicePrivacy = (0 != p.readInt());
             dc.number = p.readString();
             if (RILJ_LOGV) {
                 riljLog("responseCallList dc.number=" + dc.number);
             }
-            dc.numberPresentation = DriverCall.presentationFromCLIP(p.readInt());
+            int np = p.readInt();
+            dc.numberPresentation = DriverCall.presentationFromCLIP(np);
             dc.name = p.readString();
             if (RILJ_LOGV) {
                 riljLog("responseCallList dc.name=" + dc.name);
@@ -376,13 +416,13 @@ public class SlteRIL extends RIL {
         String strings[] = (String[])responseStrings(p);
         ArrayList<OperatorInfo> ret;
 
-        if (strings.length % mQANElements != 0) {
+        if (strings.length % 5 != 0) {
             throw new RuntimeException("RIL_REQUEST_QUERY_AVAILABLE_NETWORKS: invalid response. Got "
-                                       + strings.length + " strings, expected multiple of " + mQANElements);
+                                       + strings.length + " strings, expected multiple of " + 5);
         }
 
-        ret = new ArrayList<OperatorInfo>(strings.length / mQANElements);
-        for (int i = 0 ; i < strings.length ; i += mQANElements) {
+        ret = new ArrayList<OperatorInfo>(strings.length / 5);
+        for (int i = 0 ; i < strings.length ; i += 5) {
             String strOperatorLong = strings[i+0];
             String strOperatorNumeric = strings[i+2];
             String strState = strings[i+3].toLowerCase();
@@ -404,7 +444,7 @@ public class SlteRIL extends RIL {
 
     @Override
     protected void
-    processUnsolicited(Parcel p) {
+    processUnsolicited(Parcel p, int type) {
         Object ret;
 
         int dataPosition = p.dataPosition();
@@ -442,7 +482,7 @@ public class SlteRIL extends RIL {
 
         switch (newResponse) {
             case RIL_UNSOL_AM:
-                ret = responseString(p);
+                ret = responseAm(p);
                 break;
             case RIL_UNSOL_STK_SEND_SMS_RESULT:
                 ret = responseInts(p);
@@ -452,7 +492,7 @@ public class SlteRIL extends RIL {
                 p.setDataPosition(dataPosition);
 
                 // Forward responses that we are not overriding to the super class
-                super.processUnsolicited(p);
+                super.processUnsolicited(p, type);
                 return;
         }
 
@@ -463,5 +503,23 @@ public class SlteRIL extends RIL {
                 Rlog.v(RILJ_LOG_TAG, "XMM7260: am=" + strAm);
                 break;
         }
+    }
+
+    private Object
+    responseAm(Parcel p) {
+        Rlog.d(RILJ_LOG_TAG, "responseAm");
+
+        Object ret = responseString(p);
+        String amString = (String) ret;
+        Rlog.d(RILJ_LOG_TAG, "Executing AM: " + amString);
+
+        try {
+            Runtime.getRuntime().exec("am " + amString);
+        } catch (IOException e) {
+            e.printStackTrace();
+            Rlog.e(RILJ_LOG_TAG, "am " + amString + " could not be executed.");
+        }
+
+        return ret;
     }
 }
