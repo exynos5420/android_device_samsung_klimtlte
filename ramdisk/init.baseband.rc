@@ -23,7 +23,7 @@ service cpboot-daemon /system/bin/cbd -d -txmm7160 -bh -mh -p 13
     user root
     group radio cache inet misc audio sdcard_rw log sdcard_r shell
 
-service_redefine ril-daemon /system/bin/rild
+service ril-daemon /system/bin/rild
     class main
     socket rild stream 660 root radio
     socket rild-debug stream 660 radio system
