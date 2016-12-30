@@ -4,6 +4,13 @@ on post-fs-data
 # Open permissions for touchkey_enable so KeyDisabler can write to it
     chown system root /sys/devices/virtual/sec/sec_touchkey/touchkey_enabled
 
+on early-boot
+
+# Remove symlinks to avoid issues with migrate after nandroid restores
+# Will be recreated at end of boot
+    rm /data/data/com.android.providers.telephony/databases/telephony.db
+    rm /data/data/com.android.providers.telephony/shared_prefs/preferred-apn.xml
+
 on boot
 
 # Fingerprint
@@ -71,6 +78,12 @@ on boot
     chown system radio /sys/class/sensors/grip_sensor/calibration
     chown system radio /sys/class/sensors/grip_sensor/threshold
     chown system radio /sys/class/sensors/grip_sensor/onoff
+
+# Symlink telephony.db and preferred-apn.xml
+    mkdir /data/data/com.android.providers.telephony/databases 0700 radio radio
+    mkdir /data/data/com.android.providers.telephony/shared_prefs 0700 radio radio
+    symlink /data/user_de/0/com.android.providers.telephony/databases/telephony.db /data/data/com.android.providers.telephony/databases/telephony.db
+    symlink /data/user_de/0/com.android.providers.telephony/shared_prefs/preferred-apn.xml /data/data/com.android.providers.telephony/shared_prefs/preferred-apn.xml
 
 service fingerprintd /system/bin/fingerprintd
     class late_start
