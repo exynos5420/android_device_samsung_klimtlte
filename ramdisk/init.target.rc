@@ -60,6 +60,10 @@ on boot
     chown system system /sys/class/input/input2/enabled
     chmod 0660 /sys/class/input/input2/enabled
 
+# TouchScreen (DT2W)
+    chown system system /sys/class/input/input1/enabled
+    chmod 0660 /sys/class/input/input1/enabled
+
 # Micro-USB IC (max77803-muic)
     chown system system /sys/class/input/input0/enabled
     chmod 0660 /sys/class/input/input0/enabled
@@ -74,6 +78,11 @@ on boot
     chown system radio /sys/class/sensors/grip_sensor/calibration
     chown system radio /sys/class/sensors/grip_sensor/threshold
     chown system radio /sys/class/sensors/grip_sensor/onoff
+
+# DT2W
+    chown system system /sys/class/input/input1/wake_gesture
+    chown system radio /sys/class/input/input1/wake_gesture
+    chmod 0660 /sys/class/input/input1/wake_gesture
 
 service fingerprintd /system/bin/fingerprintd
     class late_start
