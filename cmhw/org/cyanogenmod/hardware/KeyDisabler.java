@@ -16,7 +16,7 @@
 
 package org.cyanogenmod.hardware;
 
-import org.cyanogenmod.hardware.util.FileUtils;
+import org.cyanogenmod.internal.util.FileUtils;
 
 /*
  * Disable capacitive keys
@@ -29,16 +29,18 @@ import org.cyanogenmod.hardware.util.FileUtils;
 
 public class KeyDisabler {
 
-    private static String CONTROL_PATH = "/sys/devices/virtual/sec/sec_touchkey/touchkey_enabled";
+    private static final String CONTROL_PATH = "/sys/devices/virtual/sec/sec_touchkey/touchkey_enabled";
 
-    public static boolean isSupported() { return true; }
+    public static boolean isSupported() {
+        return FileUtils.isFileReadable(CONTROL_PATH) &&
+                FileUtils.isFileWritable(CONTROL_PATH);
+    }
 
     public static boolean isActive() {
-        return (FileUtils.readOneLine(CONTROL_PATH).equals("1"));
+        return "1".equals(FileUtils.readOneLine(CONTROL_PATH));
     }
 
     public static boolean setActive(boolean state) {
-        return FileUtils.writeLine(CONTROL_PATH, (state ? "0" : "1"));
+        return FileUtils.writeLine(CONTROL_PATH, state ? "0" : "1");
     }
-
 }
