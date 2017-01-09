@@ -39,6 +39,10 @@ PRODUCT_PACKAGES += \
     fingerprint.universal5420 \
     ValidityService
 
+# Samsung Doze
+PRODUCT_PACKAGES += \
+    SamsungDoze
+
 # Keylayouts
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/keylayout/sec_touchscreen.kl:system/usr/keylayout/sec_touchscreen.kl \
