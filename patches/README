@@ -1,0 +1,3 @@
+To apply this patch go to the root of your build folder and run this command
+
+sh device/samsung/klimtlte/patches/applypatch.sh
