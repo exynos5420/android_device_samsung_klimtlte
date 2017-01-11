@@ -201,8 +201,7 @@ public class SlteRIL extends RIL {
         send(rr);
     }
 
-    @Override
-    protected void switchToRadioState(RadioState newState) {
+    private void switchToRadioState(RadioState newState) {
         setRadioState(newState);
 
         if (newState == RadioState.RADIO_ON && mPendingGetSimStatus != null) {
