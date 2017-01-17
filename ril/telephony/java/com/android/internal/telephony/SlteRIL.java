@@ -201,15 +201,6 @@ public class SlteRIL extends RIL {
         send(rr);
     }
 
-    private void switchToRadioState(RadioState newState) {
-        setRadioState(newState);
-
-        if (newState == RadioState.RADIO_ON && mPendingGetSimStatus != null) {
-            getIccCardStatus(mPendingGetSimStatus);
-            mPendingGetSimStatus = null;
-        }
-    }
-
     @Override
     protected Object
     responseIccCardStatus(Parcel p) {
