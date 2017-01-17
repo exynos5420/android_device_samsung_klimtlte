@@ -83,6 +83,11 @@ PRODUCT_PACKAGES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.carrier=unknown
 
+# call dalvik heap and hwui config
+$(call inherit-product, frameworks/native/build/phone-xxhdpi-3072-dalvik-heap.mk)
+
+$(call inherit-product-if-exists, frameworks/native/build/phone-xxhdpi-3072-hwui-memory.mk)
+
 # call the proprietary setup
 $(call inherit-product, vendor/samsung/klimtlte/klimtlte-vendor.mk)
 
