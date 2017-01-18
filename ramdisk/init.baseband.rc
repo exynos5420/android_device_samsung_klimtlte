@@ -13,6 +13,11 @@ on fs
     chown radio system /sys/devices/virtual/misc/umts_dm0/dm_state
     chown radio radio /sys/devices/platform/s5p-ehci/ehci_cpu_core
 
+on post-fs-data
+    # Symlink directories to access telephony.db and preferred-apn.xml required by cbd
+    symlink /data/user_de/0/com.android.providers.telephony/databases /data/data/com.android.providers.telephony/databases
+    symlink /data/user_de/0/com.android.providers.telephony/shared_prefs /data/data/com.android.providers.telephony/shared_prefs
+
 # Parse hardware revision (needs to happen before cbd starts)
 service modemloader /system/bin/modemloader
     class core
