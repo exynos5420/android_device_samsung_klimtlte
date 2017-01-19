@@ -21,7 +21,7 @@ LOCAL_PATH := device/samsung/klimtlte
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(LOCAL_PATH)/bluetooth
 
 # Kernel
-TARGET_KERNEL_CONFIG := cyanogenmod_deathly_klimtlte_defconfig
+TARGET_KERNEL_VARIANT_CONFIG := exynos5420_klimtlte_defconfig
 
 # Partitions
 BOARD_BOOTIMAGE_PARTITION_SIZE := 8388608
