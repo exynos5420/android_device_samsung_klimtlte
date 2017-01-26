@@ -5,8 +5,6 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/telephony.mk)
 # Inherit from klimtlte device
 $(call inherit-product, device/samsung/klimtlte/device.mk)
 
-PRODUCT_BRAND := samsung
-
 # Inherit some common LineageOS stuff.
 $(call inherit-product, vendor/cm/config/common_full_tablet_wifionly.mk)
 
@@ -17,10 +15,3 @@ PRODUCT_NAME := lineage_klimtlte
 PRODUCT_DEVICE := klimtlte
 PRODUCT_BRAND := samsung
 PRODUCT_MANUFACTURER := samsung
-PRODUCT_MODEL := SM-T705
-
-PRODUCT_BUILD_PROP_OVERRIDES += \
-    PRODUCT_MODEL=SM-T705 \
-    PRODUCT_NAME=klimtlte \
-    PRODUCT_DEVICE=klimtlte \
-    TARGET_DEVICE=klimtlte
