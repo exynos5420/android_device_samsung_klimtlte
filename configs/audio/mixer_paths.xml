@@ -356,7 +356,7 @@
     <ctl name="AIF2TX2 Input 1" value="ASRC1R" />
 
     <ctl name="IN1L Volume" value="24" />
-    <ctl name="IN1L Digital Volume" value="128" />
+    <ctl name="IN1L Digital Volume" value="150" />
     <ctl name="LHPF1 Input 1 Volume" value="32" />
   </path>
 
@@ -559,7 +559,7 @@
     <path name="main-mic" />
 
     <ctl name="IN1L Volume" value="24" />
-    <ctl name="IN1L Digital Volume" value="128" />
+    <ctl name="IN1L Digital Volume" value="150" />
     <ctl name="LHPF1 Input 1 Volume" value="32" />
   </path>
 
@@ -729,7 +729,7 @@
     <path name="main-mic" />
 
     <ctl name="IN1L Volume" value="40" />
-    <ctl name="IN1L Digital Volume" value="128" />
+    <ctl name="IN1L Digital Volume" value="150" />
     <ctl name="LHPF1 Input 1 Volume" value="32" />
   </path>
 
