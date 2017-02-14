@@ -5,6 +5,11 @@ allow rild imei_efs_file:file r_file_perms;
 allow rild app_efs_file:dir r_dir_perms;
 allow rild app_efs_file:file r_file_perms;
 
+# /dev
+allow rild audioserver:dir r_dir_perms;
+# /proc/<pid>/cmdline
+allow rild audioserver:file r_file_perms;
+
 # /dev/mbin0
 allow rild block_device:dir r_dir_perms;
 allow rild emmcblk_device:blk_file r_file_perms;
@@ -28,3 +33,5 @@ allow rild mediaserver:file { open read getattr };
 # /data/misc/radio/*
 allow rild radio_data_file:dir rw_dir_perms;
 allow rild radio_data_file:file create_file_perms;
+# /data/data/com.android.providers.telephony/databases/telephony.db
+allow rild radio_data_file:lnk_file r_file_perms;
