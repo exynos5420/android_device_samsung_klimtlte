@@ -43,12 +43,19 @@ on property:persist.sys.cpboot=disable
 #    group system radio inet net_raw
 
 on post-fs-data
+    # Remove symlinks to avoid issues with migrate after nandroid restores
+    # Will be recreated at end of boot
+    # Normal path
+    rm /data/data/com.android.providers.telephony/databases
+    rm /data/data/com.android.providers.telephony/shared_prefs
+
+    # COMPAT: Handle upgrade from previous implementation of this idea. If the
+    # above could not be unlinked then we have the old symlinked files
+    # scenario. Clean that up.
+    rmdir /data/data/com.android.providers.telephony/databases
+    rmdir /data/data/com.android.providers.telephony/shared_prefs
+
+on boot
     # Symlink directories to access telephony.db and preferred-apn.xml required by cbd
     symlink /data/user_de/0/com.android.providers.telephony/databases /data/data/com.android.providers.telephony/databases
     symlink /data/user_de/0/com.android.providers.telephony/shared_prefs /data/data/com.android.providers.telephony/shared_prefs
-
-on early-boot
-    # Remove symlinks to avoid issues with migrate after nandroid restores
-    # Will be recreated at end of boot
-    rm -r -d /data/data/com.android.providers.telephony/databases
-    rm -r -d /data/data/com.android.providers.telephony/shared_prefs
