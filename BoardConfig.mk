@@ -34,6 +34,8 @@ BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(LOCAL_PATH)/bluetooth
 # Bootloader
 TARGET_OTA_ASSERT_DEVICE := klimtlte
 
+TARGET_BOARD_INFO_FILE ?= device/samsung/klimtwifi/board-info.txt
+
 # Kernel
 TARGET_KERNEL_CONFIG := lineageos_deathly_klimtlte_defconfig
 
