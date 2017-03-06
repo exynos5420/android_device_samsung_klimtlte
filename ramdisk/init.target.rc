@@ -3,10 +3,6 @@ import init.baseband.rc
 on init
     export LD_SHIM_LIBS "/system/bin/gpsd|libshim.so"
 
-on post-fs-data
-# Open permissions for touchkey_enable so KeyDisabler can write to it
-    chown system root /sys/devices/virtual/sec/sec_touchkey/touchkey_enabled
-
 on boot
 
 # Fingerprint
