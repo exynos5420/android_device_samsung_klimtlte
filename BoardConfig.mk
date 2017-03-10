@@ -59,5 +59,9 @@ BOARD_SEPOLICY_DIRS += device/samsung/klimtlte/sepolicy
 # Cyanogen Hardware
 BOARD_HARDWARE_CLASS := $(COMMON_PATH)/cmhw
 
+# Camera: portrait orientation
+BOARD_CAMERA_FRONT_ROTATION := 270
+BOARD_CAMERA_BACK_ROTATION := 90
+
 # Inherit from exynos5420-common
 include device/samsung/exynos5420-common/BoardConfigCommon.mk
