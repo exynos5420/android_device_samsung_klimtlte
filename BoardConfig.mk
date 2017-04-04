@@ -20,6 +20,9 @@ LOCAL_PATH := device/samsung/klimtlte
 BOARD_VENDOR := samsung
 TARGET_SOC := exynos5420
 
+# Audio
+TARGET_AUDIOHAL_VARIANT := samsung
+
 # RIL
 BOARD_PROVIDES_LIBRIL := true
 # hardware/samsung/ril
@@ -62,6 +65,9 @@ BOARD_HARDWARE_CLASS := $(COMMON_PATH)/cmhw
 # Camera: portrait orientation
 BOARD_CAMERA_FRONT_ROTATION := 270
 BOARD_CAMERA_BACK_ROTATION := 90
+
+# Audio
+TARGET_AUDIOHAL_VARIANT := samsung
 
 # Inherit from exynos5420-common
 include device/samsung/exynos5420-common/BoardConfigCommon.mk
