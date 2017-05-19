@@ -1,4 +1,4 @@
-import init.baseband.rc
+import /vendor/etc/init/hw/init.baseband.rc
 
 on boot
    # Fingerprint
