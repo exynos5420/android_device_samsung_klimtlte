@@ -91,4 +91,6 @@
          config to 7. -->
     <integer name="config_deviceHardwareWakeKeys">65</integer>
 
+    <!-- Enable button brightness -->
+    <bool name="config_deviceHasVariableButtonBrightness">true</bool>
 </resources>
