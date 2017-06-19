@@ -17,7 +17,6 @@ on fs
 service modemloader /system/bin/modemloader
     class core
     oneshot
-    disabled
 
 service cpboot-daemon /system/bin/cbd -d -txmm7160 -bh -mh -p 13
     class main
@@ -25,15 +24,19 @@ service cpboot-daemon /system/bin/cbd -d -txmm7160 -bh -mh -p 13
     group radio cache inet misc audio sdcard_rw log sdcard_r shell
     disabled
 
-service_redefine ril-daemon /system/bin/rild
+service ril-daemon /system/bin/rild
     class main
     socket rild stream 660 root radio
     socket sap_uim_socket1 stream 660 bluetooth bluetooth
     socket rild-debug stream 660 radio system
     user root
     group radio cache inet misc audio sdcard_r sdcard_rw diag log readproc wakelock
-    disabled
     onrestart restart cpboot-daemon
+    disabled
+
+on property:ro.modemloader.done=1
+    start cpboot-daemon
+    start ril-daemon
 
 on property:persist.sys.cpboot=disable
     stop ril-daemon
@@ -48,14 +51,17 @@ on property:persist.sys.cpboot=disable
 on post-fs-data
     # Remove symlinks to avoid issues with migrate after nandroid restores
     # Will be recreated at end of boot
-    rm -r -d /data/data/com.android.providers.telephony/databases
-    rm -r -d /data/data/com.android.providers.telephony/shared_prefs
+    rm -r /data/data/com.android.providers.telephony/databases
+    rm -r /data/data/com.android.providers.telephony/shared_prefs
 
     # Symlink directories to access telephony.db and preferred-apn.xml required by cbd
     symlink /data/user_de/0/com.android.providers.telephony/databases /data/data/com.android.providers.telephony/databases
     symlink /data/user_de/0/com.android.providers.telephony/shared_prefs /data/data/com.android.providers.telephony/shared_prefs
+    chown radio radio /data/data/com.android.providers.telephony/databases
+    chmod 0771 /data/data/com.android.providers.telephony/databases
+    chown radio radio /data/data/com.android.providers.telephony/shared_prefs
+    chmod 0771 /data/data/com.android.providers.telephony/databases
 
-    # Now lets start the telephony services!
-    start modemloader
-    start cpboot-daemon
-    start ril-daemon
+    # restart RIL <--> modem stack to account for new locations
+    restart cpboot-daemon
+    restart ril-daemon
