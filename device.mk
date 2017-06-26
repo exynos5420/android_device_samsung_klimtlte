@@ -22,12 +22,16 @@ DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 # Device uses high-density artwork where available
 PRODUCT_AAPT_CONFIG := normal large xlarge
 
-# Audio
+# Audio HAL
 PRODUCT_PACKAGES += \
     audio.primary.universal5420
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/audio/mixer_paths_0.xml:system/etc/mixer_paths_0.xml
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    audio_hal.force_voice_config=wide \
+    audio_hal.disable_two_mic=true
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 2560
