@@ -9,8 +9,10 @@ ro.sf.lcd_density=320
 rild.libpath=/system/lib/libsec-ril.so
 rild.libargs=-d /dev/ttyS0
 ro.telephony.default_network=9
-ro.telephony.ril_class=SlteRIL
-ro.ril.telephony.mqanelements=5
+ro.telephony.ril_class=SamsungExynosRIL
+ro.ril.telephony.mqanelements=6
+ro.ril.samsung_nextgen_modem=1
+ro.ril.needs_videocall_field=0
 
 # Randomly from stock
 ro.ril.gprsclass=10
