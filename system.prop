@@ -11,6 +11,8 @@ rild.libargs=-d /dev/ttyS0
 ro.telephony.default_network=9
 ro.telephony.ril_class=SlteRIL
 ro.ril.telephony.mqanelements=5
+ro.ril.telephony.samsung_nextgen_modem=1
+ro.ril.telephony.needs_videocall_field=1
 
 # Randomly from stock
 ro.ril.gprsclass=10
