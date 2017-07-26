@@ -66,8 +66,5 @@ BOARD_HARDWARE_CLASS := $(COMMON_PATH)/cmhw
 BOARD_CAMERA_FRONT_ROTATION := 270
 BOARD_CAMERA_BACK_ROTATION := 90
 
-# Audio
-TARGET_AUDIOHAL_VARIANT := samsung
-
 # Inherit from exynos5420-common
 include device/samsung/exynos5420-common/BoardConfigCommon.mk
