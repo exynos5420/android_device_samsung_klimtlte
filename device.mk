@@ -57,7 +57,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     libshim
 
-PRODUCT_PROPERTY_OVERRIDES := \
+PRODUCT_PROPERTY_OVERRIDES += \
     keyguard.no_require_sim=true \
     ro.com.android.dataroaming=true
 
