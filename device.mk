@@ -78,11 +78,14 @@ PRODUCT_PACKAGES += \
 # Radio
 PRODUCT_PACKAGES += \
     libril \
-    librilutils \
+    libreference-ril \
     rild \
     libxml2 \
     libprotobuf-cpp-full \
-    modemloader
+    modemloader \
+    android.hardware.radio@1.0 \
+    android.hardware.radio.deprecated@1.0 \
+    libsec-ril_shim
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.carrier=unknown
