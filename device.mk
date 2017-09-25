@@ -98,6 +98,9 @@ PRODUCT_PACKAGES += \
 $(call inherit-product, frameworks/native/build/phone-xxhdpi-3072-dalvik-heap.mk)
 $(call inherit-product-if-exists, frameworks/native/build/phone-xxhdpi-3072-hwui-memory.mk)
 
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/manifest.xml:system/vendor/manifest.xml
+
 # call the proprietary setup
 $(call inherit-product, vendor/samsung/klimtlte/klimtlte-vendor.mk)
 
