@@ -1,7 +1,7 @@
 import init.baseband.rc
 
 on init
-    export LD_SHIM_LIBS "/system/bin/gpsd|libshim.so"
+    export LD_SHIM_LIBS "/system/bin/gpsd|gpsd_shim.so:/system/lib/libsec-ril.so|libsec-ril_shim.so"
 
 on boot
 
