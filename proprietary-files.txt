@@ -1,9 +1,6 @@
 # All unpinned blobs comes from T705XXU1CPK2
 # Vendor security patch level 2016-11-01
 
-# DRM
-lib/liboemcrypto.so:vendor/lib/liboemcrypto.so
-
 # GPS
 bin/gpsd:vendor/bin/gpsd
 etc/floating_feature.xml:vendor/etc/floating_feature.xml
