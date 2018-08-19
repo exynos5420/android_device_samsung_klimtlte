@@ -72,12 +72,12 @@ on boot
     chown system radio /sys/class/sensors/grip_sensor/onoff
 
 service fingerprintd /system/bin/fingerprintd
-    class late_start
+    class main
     user system
     group input
 
 # SENSOR FRAMEWORK : starts fingerprintService
 service vcsFPService /system/bin/vcsFPService
-    class late_start
+    class main
     user system
     group system
