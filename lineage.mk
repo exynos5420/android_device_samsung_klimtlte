@@ -20,4 +20,7 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     PRODUCT_MODEL=SM-T705 \
     PRODUCT_NAME=klimtlte \
     PRODUCT_DEVICE=klimtlte \
+    PRIVATE_BUILD_DESC="samsung/klimtltexx/klimtlte:6.0.1/MMB29K/T705XXU1CQB1:user/release-keys" \
     TARGET_DEVICE=klimtlte
+
+BUILD_FINGERPRINT := samsung/klimtltexx/klimtlte:6.0.1/MMB29K/T705XXU1CQB1:user/release-keys
