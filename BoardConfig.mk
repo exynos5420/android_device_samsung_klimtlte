@@ -19,6 +19,9 @@ include device/samsung/klimt-common/BoardConfigCommon.mk
 
 LOCAL_PATH := device/samsung/klimtlte
 
+# Include path
+TARGET_SPECIFIC_HEADER_PATH += $(LOCAL_PATH)/include
+
 # Assert
 TARGET_OTA_ASSERT_DEVICE := klimtlte
 
