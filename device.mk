@@ -16,5 +16,10 @@
 
 LOCAL_PATH := device/samsung/klimtlte
 
+# Ramdisk
+PRODUCT_PACKAGES += \
+    init.baseband.rc \
+    init.target.rc
+
 # Inherit from klimt-common
 $(call inherit-product, device/samsung/klimt-common/device-common.mk)
