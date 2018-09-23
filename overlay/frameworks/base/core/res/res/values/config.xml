@@ -94,4 +94,6 @@
     <!-- Is the device capable of hot swapping an UICC Card -->
     <bool name="config_hotswapCapable">true</bool>
 
+    <!-- VCS limits the number of fingerprints per user to 3 -->
+    <integer name="config_fingerprintMaxTemplatesPerUser">3</integer>
 </resources>
