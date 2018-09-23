@@ -22,6 +22,9 @@ LOCAL_PATH := device/samsung/klimtlte
 # Assert
 TARGET_OTA_ASSERT_DEVICE := klimtlte
 
+# Kernel
+TARGET_KERNEL_CONFIG := lineageos_klimtlte_defconfig
+
 # Partitions
 BOARD_BOOTIMAGE_PARTITION_SIZE := 8388608
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 10485760
