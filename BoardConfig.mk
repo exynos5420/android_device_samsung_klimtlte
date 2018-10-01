@@ -37,3 +37,6 @@ BOARD_FLASH_BLOCK_SIZE := 4096
 # RIL
 BOARD_PROVIDES_LIBRIL := true
 BOARD_MODEM_TYPE := xmm7260
+
+# Inherit from the proprietary version
+-include vendor/samsung/klimtlte/BoardConfigVendor.mk

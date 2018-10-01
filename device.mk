@@ -36,3 +36,6 @@ PRODUCT_COPY_FILES += \
 
 # Inherit from klimt-common
 $(call inherit-product, device/samsung/klimt-common/device-common.mk)
+
+# call the proprietary setup
+$(call inherit-product-if-exists, vendor/samsung/klimtlte/klimtlte-vendor.mk)
