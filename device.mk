@@ -29,10 +29,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/audio/mixer_paths_0.xml:system/etc/mixer_paths_0.xml
 
-PRODUCT_PROPERTY_OVERRIDES += \
-    audio_hal.force_voice_config=wide \
-    audio_hal.disable_two_mic=true
-
 # Boot animation
 TARGET_SCREEN_HEIGHT := 2560
 TARGET_SCREEN_WIDTH := 1600
