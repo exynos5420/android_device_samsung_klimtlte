@@ -16,6 +16,10 @@
 
 LOCAL_PATH := device/samsung/klimtlte
 
+# Permissions
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.telephony.gsm.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.telephony.gsm.xml
+
 # Ramdisk
 PRODUCT_PACKAGES += \
     init.baseband.rc \
