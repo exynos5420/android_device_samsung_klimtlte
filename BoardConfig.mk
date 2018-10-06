@@ -31,6 +31,10 @@ TARGET_KERNEL_CONFIG := lineageos_klimtlte_defconfig
 # HIDL
 DEVICE_MANIFEST_FILE += $(LOCAL_PATH)/manifest.xml
 
+# Legacy BLOB Support
+TARGET_PROCESS_SDK_VERSION_OVERRIDE += \
+    /system/vendor/bin/hw/rild=27
+
 # Partitions
 BOARD_BOOTIMAGE_PARTITION_SIZE := 8388608
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 10485760
