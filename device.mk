@@ -84,9 +84,13 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.carrier=unknown
 
 # call dalvik heap and hwui config
-$(call inherit-product, frameworks/native/build/phone-xxhdpi-3072-dalvik-heap.mk)
-
-$(call inherit-product-if-exists, frameworks/native/build/phone-xxhdpi-3072-hwui-memory.mk)
+PRODUCT_PROPERTY_OVERRIDES += \
+    dalvik.vm.heapstartsize=8m \
+    dalvik.vm.heapgrowthlimit=288m \
+    dalvik.vm.heapsize=768m \
+    dalvik.vm.heaptargetutilization=0.75 \
+    dalvik.vm.heapminfree=512k \
+    dalvik.vm.heapmaxfree=8m
 
 # call the proprietary setup
 $(call inherit-product, vendor/samsung/klimtlte/klimtlte-vendor.mk)
