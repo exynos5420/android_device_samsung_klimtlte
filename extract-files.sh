@@ -67,6 +67,10 @@ extract "${MY_DIR}/proprietary-files.txt" "${SRC}" \
 
 # Fix proprietary blobs
 BLOB_ROOT="$LINEAGE_ROOT"/vendor/"$VENDOR"/"$DEVICE"/proprietary
-patchelf --replace-needed libprotobuf-cpp-full.so libprotobuf-cpp-haxx.so $BLOB_ROOT/lib/libsec-ril.so
+patchelf --replace-needed libprotobuf-cpp-full.so libprotobuf-cpp-haxx.so $BLOB_ROOT/vendor/lib/libsec-ril.so
+
+# Vendor separation
+sed -i "s|system/etc|vendor/etc|g" $BLOB_ROOT/vendor/lib/libfloatingfeature.so
+sed -i "s|system/etc|vendor/etc|g" $BLOB_ROOT/vendor/lib/libsec-ril.so
 
 "${MY_DIR}/setup-makefiles.sh"

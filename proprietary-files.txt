@@ -2,14 +2,14 @@
 # Vendor security patch level 2016-11-01
 
 # DRM
-lib/liboemcrypto.so
+lib/liboemcrypto.so:vendor/lib/liboemcrypto.so
 
 # GPS
-bin/gpsd
-etc/floating_feature.xml
-lib/hw/gps.default.so:lib/hw/gps.universal5420.so
-lib/libfloatingfeature.so
-lib/libwrappergps.so
+bin/gpsd:vendor/bin/gpsd
+etc/floating_feature.xml:vendor/etc/floating_feature.xml
+lib/hw/gps.default.so:vendor/lib/hw/gps.universal5420.so
+lib/libfloatingfeature.so:vendor/lib/libfloatingfeature.so
+lib/libwrappergps.so:vendor/lib/libwrappergps.so
 
 # NXP Noise Cancelling
 vendor/etc/nxp/BargeIn/Tx_ControlParams_WIDEBAND_ANALOG_DOCK.txt
@@ -99,11 +99,11 @@ vendor/etc/nxp/mVoIPWebEx/Tx_ControlParams_WIDEBAND_WIRED_HEADSET.txt
 
 # RIL
 # cbd, from boot.img and pinned to stop removal when extracting from system image
-bin/cbd|18702d167b658d9d5c02eb7590efccedbd35063e
-etc/plmn_delta.bin
-etc/plmn_se13.bin
-lib/libsec-ril.so
-lib/libprotobuf-cpp-full.so:lib/libprotobuf-cpp-haxx.so
+bin/cbd:vendor/bin/cbd|18702d167b658d9d5c02eb7590efccedbd35063e
+etc/plmn_delta.bin:vendor/etc/plmn_delta.bin
+etc/plmn_se13.bin:vendor/etc/plmn_se13.bin
+lib/libsec-ril.so:vendor/lib/libsec-ril.so
+lib/libprotobuf-cpp-full.so:vendor/lib/libprotobuf-cpp-haxx.so
 
 # Sensors
-lib/hw/sensors.universal5420.so:lib/sensors.universal5420.so
+lib/hw/sensors.universal5420.so:vendor/lib/sensors.universal5420.so

@@ -65,7 +65,7 @@ on boot
     chown system radio /sys/class/sensors/grip_sensor/onoff
 
 # SENSOR FRAMEWORK : starts fingerprintService
-service vcsFPService /system/bin/vcsFPService
+service vcsFPService /vendor/bin/vcsFPService
     class main
     user system
     group system
