@@ -106,4 +106,4 @@ lib/libsec-ril.so
 lib/libprotobuf-cpp-full.so:lib/libprotobuf-cpp-haxx.so
 
 # Sensors
-lib/hw/sensors.universal5420.so
+lib/hw/sensors.universal5420.so:lib/sensors.universal5420.so
