@@ -48,6 +48,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     libshim_gps
 
+# VNDK
+PRODUCT_COPY_FILES += \
+    prebuilts/vndk/v29/arm/arch-arm-armv7-a-neon/shared/vndk-sp/libcutils.so:$(TARGET_COPY_OUT_VENDOR)/lib/libcutils-v29.so
+
 # Vendor security patch level
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.lineage.build.vendor_security_patch=2016-11-01

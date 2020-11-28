@@ -68,6 +68,8 @@ extract "${MY_DIR}/proprietary-files.txt" "${SRC}" \
 # Fix proprietary blobs
 BLOB_ROOT="$LINEAGE_ROOT"/vendor/"$VENDOR"/"$DEVICE"/proprietary
 patchelf --replace-needed libprotobuf-cpp-full.so libprotobuf-cpp-full-v23.so $BLOB_ROOT/vendor/lib/libsec-ril.so
+patchelf --replace-needed libcutils.so libcutils-v29.so $BLOB_ROOT/vendor/lib/libsec-ril.so
+
 (perl -pi -e "s/\/system\/bin\/gpsd/\/vendor\/bin\/gpsd/g" $BLOB_ROOT/vendor/lib/libsec-ril.so)
 
 # Vendor separation
