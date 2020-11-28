@@ -103,7 +103,7 @@ bin/cbd:vendor/bin/cbd|18702d167b658d9d5c02eb7590efccedbd35063e
 etc/plmn_delta.bin:vendor/etc/plmn_delta.bin
 etc/plmn_se13.bin:vendor/etc/plmn_se13.bin
 lib/libsec-ril.so:vendor/lib/libsec-ril.so
-lib/libprotobuf-cpp-full.so:vendor/lib/libprotobuf-cpp-haxx.so
+lib/libprotobuf-cpp-full.so:vendor/lib/libprotobuf-cpp-full-v23.so
 
 # Sensors
 lib/hw/sensors.universal5420.so:vendor/lib/sensors.universal5420.so
