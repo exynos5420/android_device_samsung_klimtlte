@@ -44,5 +44,9 @@ BOARD_FLASH_BLOCK_SIZE := 4096
 BOARD_PROVIDES_LIBRIL := true
 BOARD_MODEM_TYPE := xmm7260
 
+# Shims
+TARGET_LD_SHIM_LIBS += \
+    /system/bin/gpsd|/system/lib/libshim_gps.so
+
 # Inherit from the proprietary version
 -include vendor/samsung/klimtlte/BoardConfigVendor.mk

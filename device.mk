@@ -44,6 +44,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/init/rild.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/rild.legacy.rc
 
+# Shims
+PRODUCT_PACKAGES += \
+    libshim_gps
+
 # System properties
 -include $(LOCAL_PATH)/system_prop.mk
 
