@@ -56,4 +56,4 @@ TARGET_LD_SHIM_LIBS += \
     /vendor/bin/gpsd|/vendor/lib/libshim_gps.so
 
 # Inherit from the proprietary version
--include vendor/samsung/klimtlte/BoardConfigVendor.mk
+include vendor/samsung/klimtlte/BoardConfigVendor.mk
