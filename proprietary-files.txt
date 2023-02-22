@@ -1,5 +1,5 @@
-# All unpinned blobs comes from T705XXU1CPK2
-# Vendor security patch level 2016-11-01
+# All unpinned blobs comes from T705DDS1CRK1
+# Vendor security patch level 2016-12-01
 
 # GPS
 bin/gpsd:vendor/bin/gpsd

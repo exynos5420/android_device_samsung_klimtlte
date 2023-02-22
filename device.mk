@@ -54,7 +54,7 @@ PRODUCT_COPY_FILES += \
 
 # Vendor security patch level
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.lineage.build.vendor_security_patch=2016-11-01
+    ro.lineage.build.vendor_security_patch=2016-12-01
 
 # System properties
 -include $(LOCAL_PATH)/system_prop.mk
