@@ -35,6 +35,6 @@ PRODUCT_GMS_CLIENTID_BASE := android-samsung
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
     PRODUCT_NAME=klimtltexx \
-    PRIVATE_BUILD_DESC="klimtltexx-user 6.0.1 MMB29K T705XXU1CQB1 release-keys"
+    PRIVATE_BUILD_DESC="klimtltexx-user 6.0.1 MMB29K T705XXU1CVH1 release-keys"
 
-BUILD_FINGERPRINT := samsung/klimtltexx/klimtlte:6.0.1/MMB29K/T705XXU1CQB1:user/release-keys
+BUILD_FINGERPRINT := samsung/klimtltexx/klimtlte:6.0.1/MMB29K/T705XXU1CVH1:user/release-keys
